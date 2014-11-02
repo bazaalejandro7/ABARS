@@ -1,0 +1,91 @@
+import java.util.ArrayList;
+
+
+
+
+/**
+ * @author William
+ * @version 1.0
+ * @created 16-Oct-2014 3:32:00 AM
+ * 
+ * Creates the course object.
+ */
+public class Course {
+
+	private String courseDescription;
+	private String courseNum;
+	private int credits;
+	private ArrayList<Course> prerequisites;
+	private Course corequisite;
+	private int timeSlot;
+	private int dataColCourse;
+
+	/**
+	 * Creates the course object
+	 * @param courseNum - course number
+	 * @param credits -  number of credit hours
+	 * @param corequisite - any corequisite classes needed for this class
+	 * @param prerequisites - any prerequisite classes needed for this class
+	 * @param courseDescription - the courses description
+	 * @param timeSlot - which time slot the
+	 * @param dataColCourse - column in database that the course is held 
+	 */
+	public Course(String courseNum, int credits, Course corequisite, ArrayList<Course> prerequisites, String courseDescription, int timeSlot, int dataColCourse){
+		this.courseNum = courseNum;
+		this.credits = credits;
+		this.corequisite = corequisite;
+		this.prerequisites = prerequisites;
+		this.courseDescription = courseDescription;
+		this.timeSlot = timeSlot;
+		this.dataColCourse = dataColCourse;
+	}
+
+	public String getCourseDescription() {
+		return courseDescription;
+	}
+
+	public void setCourseDescription(String courseDescription) {
+		this.courseDescription = courseDescription;
+	}
+
+	public String getCourseNum() {
+		return courseNum;
+	}
+
+	public void setCourseNum(String courseNum) {
+		this.courseNum = courseNum;
+	}
+
+	public int getCredits() {
+		return credits;
+	}
+
+	public void setCredits(int credits) {
+		this.credits = credits;
+	}
+
+	public ArrayList<Course> getPrerequisites() {
+		return prerequisites;
+	}
+
+	public void setPrerequisites(ArrayList<Course> prerequisites) {
+		this.prerequisites = prerequisites;
+	}
+
+	public Course getCorequisite() {
+		return corequisite;
+	}
+
+	public void setCorequisite(Course corequisite) {
+		this.corequisite = corequisite;
+	}
+
+	public int getTimeSlot() {
+		return timeSlot;
+	}
+
+	public int getDataColCourse() {
+		return dataColCourse;
+	}
+	
+}//end Course
