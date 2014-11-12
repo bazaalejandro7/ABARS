@@ -1,0 +1,24 @@
+/**
+* Author: Alejandro Baza
+* Date: 2014-10-11
+* Description: This file contains the methods that control the action of courses
+
+* Change log:
+*	<2014-10-11> Initial version created
+*
+* References:
+* N/A
+*/
+
+public class AuctionRunner {
+	
+	/**
+	 * 
+	 * @author Alejandro Baza
+	 * This class puts the courses bid by the students into an arraylist
+	 *
+	 */
+	public void StudentBidCourse() {
+		
+	}
+}

@@ -93,4 +93,16 @@ public class StudentDatabase {
 				taken.getPrerequisites(), grade, taken.getTimeSlot(), taken.getDataColCourse(), grade);
 		
 	}
-}//end StudentDatabase
+	 
+	/**
+	 * @author Alejandro Baza
+	 * This method puts the courses that the student bid for into a list that will be the schedule
+	 * 
+	 */
+	
+	public void ScheduleList() {
+	}
+}
+
+
+//end StudentDatabase
