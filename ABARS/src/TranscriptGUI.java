@@ -4,13 +4,21 @@ import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/**
+ * 
+ * @author courtneyfennell
+ *
+ */
 
 @SuppressWarnings("serial")
 public class TranscriptGUI extends JPanel{
 	ArrayList<GradedCourse> gradedCourses;
 	Student currStudent;
 	
+	/**
+	 * 
+	 * @param student
+	 */
 	public TranscriptGUI(Student student){
 		currStudent = student;
 		gradedCourses = currStudent.getCoursesTaken();
@@ -21,6 +29,7 @@ public class TranscriptGUI extends JPanel{
 		this.add(new JLabel("Grade:"));
 		this.add(new JLabel("Credits:"));
 		
+		//displays all graded courses
 		for(int i = 0; i<gradedCourses.size();i++){
 			this.add(Box.createHorizontalStrut(5));
 			GradedCourse course =gradedCourses.get(i);

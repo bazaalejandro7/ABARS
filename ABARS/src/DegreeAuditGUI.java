@@ -8,12 +8,16 @@ import javax.swing.JPanel;
 
 import jxl.read.biff.BiffException;
 
-/*
- * Courtney Fennell
+/**
  * 
+ * @author courtneyfennell
+ *
  */
 @SuppressWarnings("serial")
 public class DegreeAuditGUI extends JPanel {
+
+	//change to JScrollPane
+	//import javax.swing.JScrollPane;
 
 	Student currStudent;
 	ArrayList<GradedCourse> gradedCourses;
@@ -21,12 +25,17 @@ public class DegreeAuditGUI extends JPanel {
 	CourseDatabase cd;
 
 	int i;
-
+/**
+ * 
+ * @param Student1
+ * @throws BiffException
+ * @throws IOException
+ */
 	public DegreeAuditGUI(Student Student1) throws BiffException, IOException{
 		cd = new CourseDatabase();
 		currStudent = Student1;
 		allCourses = cd.getCourseList();
-		
+
 		gradedCourses = currStudent.getCoursesTaken();
 
 
@@ -54,7 +63,7 @@ public class DegreeAuditGUI extends JPanel {
 
 		//continue from same spot for the rest of the courses without grades
 		for(;i<allCourses.size();i++){
-			
+
 			this.add(Box.createHorizontalStrut(5));
 			Course currCourse = allCourses.get(i);
 			JLabel currLabel = new JLabel(currCourse.getCourseNum());
