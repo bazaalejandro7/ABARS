@@ -117,7 +117,6 @@ public class Student {
 		address = text;
 	}
 	public ArrayList<GradedCourse> getCoursesTaken(){
-		System.out.println(coursesTaken);
 		return coursesTaken;
 	}
 
