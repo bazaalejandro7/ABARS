@@ -15,8 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import jxl.read.biff.BiffException;
-
-
+/**
+ * 
+ * @author courtneyfennell
+ *
+ */
 @SuppressWarnings("serial")
 public class MainFrameGUI extends JFrame {
 
@@ -34,7 +37,12 @@ public class MainFrameGUI extends JFrame {
 	String bidPanelCard;
 	JPanel middlePanel;
 	CardLayout c1;
-
+/**
+ * 
+ * @param student
+ * @throws BiffException
+ * @throws IOException
+ */
 	public MainFrameGUI(Student student) throws BiffException, IOException{
 		currStudent = student;
 
@@ -154,7 +162,13 @@ public class MainFrameGUI extends JFrame {
 
 
 	}
+	/**
+	 * 
+	 * @author courtneyfennell
+	 *
+	 */
 	class DegreeAuditListener implements ActionListener { // Inner class
+
 		public void actionPerformed(ActionEvent e){
 			c1.show(middlePanel, degreeAuditCard);
 
