@@ -13,7 +13,7 @@ import jxl.read.biff.BiffException;
  */
 @SuppressWarnings("serial")
 public class RegisterPaneGUI extends JScrollPane {
-	/**
+	/**this constructor creates the Scroll pane for the register panel.
 	 * 
 	 * @param student
 	 * @throws BiffException

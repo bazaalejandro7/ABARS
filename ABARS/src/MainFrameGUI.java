@@ -41,7 +41,7 @@ public class MainFrameGUI extends JFrame {
 	String bidPanelCard;
 	JPanel middlePanel;
 	CardLayout c1;
-/**
+/** This constructor creates the main Frame GUI that holds all of the GUI components. 
  * 
  * @param student
  * @throws BiffException

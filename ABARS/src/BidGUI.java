@@ -20,7 +20,7 @@ public class BidGUI extends JPanel {
 	Student currStudent;
 	ArrayList<BidCourse> bidCourses;
 
-	/**
+	/**This panel displays all of the classes that the student has bid for before the auction runs
 	 * 
 	 * @param student
 	 * @throws BiffException
@@ -38,7 +38,11 @@ public class BidGUI extends JPanel {
 		//TODO WIP
 
 	}
-
+/**
+ * This action listener listens for the class to be chosen
+ * @author courtneyfennell
+ *
+ */
 	class DropListener implements ActionListener { // Inner class
 		public void actionPerformed(ActionEvent e) {
 

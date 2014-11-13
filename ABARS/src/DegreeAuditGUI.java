@@ -27,7 +27,7 @@ public class DegreeAuditGUI extends JPanel {
 	CourseDatabase cd;
 
 	int i;
-	/**
+	/**This is the constructor for the degree audit GUI Panel that displays the degree audit page
 	 * 
 	 * @param Student1
 	 * @throws BiffException

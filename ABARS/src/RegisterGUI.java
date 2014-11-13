@@ -25,7 +25,7 @@ public class RegisterGUI extends JPanel {
 	CourseDatabase cd;
 	
 	//this is where a student can add a class
-/**
+/** This constructor creates the panel that displays all the classes a student can choose to register for
  * 
  * @param student
  * @throws BiffException

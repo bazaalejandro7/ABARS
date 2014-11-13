@@ -17,7 +17,7 @@ public class TranscriptGUI extends JPanel{
 	ArrayList<GradedCourse> gradedCourses;
 	Student currStudent;
 	
-	/**
+	/**this constructor creates the transcript panel that displays all the classes that a student has taken.
 	 * 
 	 * @param student
 	 */
