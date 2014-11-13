@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 
 /**
- * Changelog: Matthew Alpert - getTranscript, bidCourses- 10/16/2014
- * @author William
+ * @author Matthew Alpert
  * @version 1.5
  * @created 16-Oct-2014 3:32:01 AM
+ * This class creates a student object with various data fields.
+ * It includes a personal information, transcript, courses currently
+ * bid on, and a current schedule (after the auction has run).  
  */
 public class Student {
 
@@ -26,10 +28,16 @@ public class Student {
 	private String username;
 	private String name, address;
 
-	public Student(){
-		bidCourses = new ArrayList<BidCourse>();
-	}
-
+	/**
+	 * @author Matthew Alpert
+	 * @param coursesTaken - ArrayList of type GradedCourse which hold a list of courses graded and taken. Used in transcript
+	 * @param numID - the student's ID number
+	 * @param numPoints - total number of points the student can use to bid on classes
+	 * @param password - student's login password
+	 * @param username - student's login username
+	 * @param name - student's personal name
+	 * @param address - student's personal address
+	 */
 	public Student(ArrayList<GradedCourse> coursesTaken, int numID, int numPoints,
 			String password, String username, String name, String address) {
 		this.coursesTaken = coursesTaken;
@@ -44,17 +52,16 @@ public class Student {
 	}
 
 	/**
-	 * 
-	 * @param courses    courses
-	 * Matt:
-	 * added bidPoints
-	 * difficultly adding course and point value to 2d arraylist
+	 * @author Matthew Alpert
+	 * @param course - the course the student is bidding on to take for the next semester, will add to the database
+	 * @param bidPoints - number of points the student is using for the bid on the course, will add to the database
 	 */
 	public void addCourse(Course course, int bidPoints){
 		if(coursesTaken.contains(course) && bidPoints <= numPoints){
 			bidCourses.add(new BidCourse(course.getCourseNum(), course.getCredits(),
 					course.getCorequisite(), course.getPrerequisites(),
 					course.getCourseDescription(), course.getTimeSlot(), course.getDataColCourse(), bidPoints));
+//			write to database
 		}else{
 			//error message
 		}
@@ -62,63 +69,114 @@ public class Student {
 	}
 
 	/**
-	 * 
-	 * @param courses    courses
+	 * @author Matthew Alpert
+	 * @param dropCourse - BidCourse object that the student wishes to drop their bid for
 	 */
 	public void dropCourse(BidCourse dropCourse){
 		numPoints += dropCourse.getBid();
 		bidCourses.remove(dropCourse);
+//		write to database
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return the currentSchedule of the student
+	 * currentSchedule will only have Course objects inside it after the auction has run
+	 */
 	public ArrayList<Course> getCurrentSchedule() {
 		return currentSchedule;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param currentSchedule - sets the schedule that the student has been placed into to
+	 */
 	public void setCurrentSchedule(ArrayList<Course> currentSchedule) {
 		this.currentSchedule = currentSchedule;
+//		write to database
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return current the number of points a student has to bid on courses
+	 */
 	public int getNumPoints() {
 		return numPoints;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param numPoints - current total number of points the student can use to bid on classes
+	 */
 	public void setNumPoints(int numPoints) {
 		this.numPoints = numPoints;
+//		write to database
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return the student's ID number
+	 */
 	public int getNumID() {
 		return numID;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return student's login password
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return student's login username
+	 */
 	public String getUsername() {
 		return username;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return student's personal address
+	 */
 	public String getAddress() {
 		return address;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param text - student's personal name
+	 */
 	public void setName(String text) {
-		// TODO Auto-generated method stub
 		name = text;
+//		write to database
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return student's personal name
+	 */
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param text - student's personal address
+	 */
 	public void setAddress(String text) {
-		// TODO Auto-generated method stub
 		address = text;
+//		write to database
 	}
+	
+	/**
+	 * @author Matthew Alpert
+	 * @return ArrayList of type GradedCourse which hold a list of courses graded and taken. Used in transcript
+	 */
 	public ArrayList<GradedCourse> getCoursesTaken(){
 		return coursesTaken;
 	}
-
 	
 }//end Student

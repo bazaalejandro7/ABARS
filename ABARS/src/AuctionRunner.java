@@ -1,8 +1,9 @@
+
 /**
 * Author: Alejandro Baza
 * Date: 2014-10-11
 * Description: This file contains the methods that control the action of courses
-
+*
 * Change log:
 *	<2014-10-11> Initial version created
 *

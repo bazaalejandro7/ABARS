@@ -9,13 +9,23 @@ import jxl.read.biff.BiffException;
 
 /**
  * @author Matthew Alpert
- * @version 1.0
+ * @version 1.5
  * @created 16-Oct-2014 3:32:00 AM
+ * 
+ * This class utilizes the open source API JExcel.
+ * Using JExcel, this class reads in and creates all
+ * the course objects in the database.
  */
 public class CourseDatabase {
 
 	private ArrayList<Course> courseList;
 	
+	/**
+	 * @author Matthew Alpert
+	 * @throws BiffException
+	 * @throws IOException
+	 * Constructs the course database
+	 */
 	public CourseDatabase() throws BiffException, IOException{
 		Workbook workbook = Workbook.getWorkbook(new File("Course Database.xls"));
 		Sheet sheet = workbook.getSheet(0);
@@ -67,6 +77,12 @@ public class CourseDatabase {
 		}
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param someCourse - a given course name (example: SE 300)
+	 * @return the course object with the same given name, otherwise return null.
+	 * This method searches for the course object inside the database.
+	 */
 	private Course searchFor(String someCourse){
 
 		int i = 0;
@@ -81,11 +97,20 @@ public class CourseDatabase {
 			return courseList.get(i);
 		}
 	}
-	
+
+	/**
+	 * @author Matthew Alpert
+	 * @param courseName - a given course name (example: SE 300)
+	 * @return course object or null. 
+	 */
 	public Course getCourse(String courseName){
 		return searchFor(courseName);
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return all the courses listed in the course database
+	 */
 	public ArrayList<Course> getCourseList() {
 		return courseList;
 	}
