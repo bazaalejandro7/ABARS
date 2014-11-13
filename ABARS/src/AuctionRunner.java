@@ -1,3 +1,7 @@
+import java.text.Collator;
+import java.util.Arrays;
+import java.util.Locale;
+
 
 /**
 * Author: Alejandro Baza
@@ -19,18 +23,27 @@ public class AuctionRunner {
 	 * This method puts the students that bid for courses into an arraylist
 	 *
 	 */
+	
 	public void StudentBidList() {
 		
 	}
 	
 	/**
 	 * @author Alejandro Baza
-	 * This method sorts the list of students that bid for courses
+	 * This method sorts the list of students that bid for courses alphabetically
 	 * 
 	 */
 	
 	public void SortList() {
-		
+		Collator col = Collator.getInstance(new Locale("en", "EN"));
+		String s = "AbaC";
+		String[] s1= s.split("");
+		Arrays.sort(s1, col);
+		String sorted = "";
+		for (int i = 0; i < s1.length; i++)
+		{
+		  sorted += s1[i];
+		}
 	}
 	
 	/**
@@ -38,6 +51,7 @@ public class AuctionRunner {
 	 * This method adds courses to the student's current schedule
 	 * 
 	 */
+	
 	public void AddCourseToSchedule() {
 		
 	}

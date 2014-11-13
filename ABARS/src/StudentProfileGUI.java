@@ -12,7 +12,10 @@ import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class StudentProfileGUI extends JPanel {
-
+	/***
+	 * Class for the Student Profile GUI
+	 * <p>Displays Student information and Logout Button</p>
+	 */
 	//Panel Data Fields
 	private Student student;
 	private final String[] labelPrefixes={"Username: ","Name: ","ID: "};
@@ -25,27 +28,35 @@ public class StudentProfileGUI extends JPanel {
 	}
 
 	//Main Panel Constructor with student input
+	/***
+	 * Constructor for the Student Profile GUI
+	 * 
+	 * @param Student student
+	 */
 	public StudentProfileGUI(Student student){
 		JButton logoutButton;
-
+		JPanel tempPanel=new JPanel();
 
 		this.student=student;
+		
+		this.setLayout(new GridLayout(2,1));
+		tempPanel.setLayout(new GridLayout(5,1));
 
-		this.setLayout(new GridLayout(5,1));
-
-		this.add(new JLabel("Student Information"));
+		tempPanel.add(new JLabel("Student Information"));
 
 		for(int i=0;i<dataLabels.length;i++){
 			dataLabels[i]=new JLabel();
-			this.add(dataLabels[i]);
+			tempPanel.add(dataLabels[i]);
 		}
 
 
 		logoutButton=new JButton("Logout");
 
-		this.add(logoutButton);
+		tempPanel.add(logoutButton);
 		logoutButton.addActionListener(new LogoutListener());
-
+		
+		this.add(tempPanel);
+		this.add(new JLabel());
 		updateData();
 	}
 
@@ -56,11 +67,20 @@ public class StudentProfileGUI extends JPanel {
 	}
 
 	//Method to update the data labels
+	/***
+	 * Void method that updates the panel Labels
+	 */
 	public void updateData(){
 		dataLabels[0].setText(labelPrefixes[0]+student.getUsername());
 		dataLabels[1].setText(labelPrefixes[1]+student.getName());
 		dataLabels[2].setText(labelPrefixes[2]+student.getNumID());
 	}
+	
+	/***Logout listener Class
+	 * <p>Shuts Down Program (Later Versions will Return to Login)</p>
+	 * @author WIlliam Merritt
+	 *
+	 */
 	
 	class LogoutListener implements ActionListener { 
 		public void actionPerformed(ActionEvent e) {

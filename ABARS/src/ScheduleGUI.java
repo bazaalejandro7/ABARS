@@ -1,11 +1,11 @@
 import javax.swing.JPanel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("serial")
 public class ScheduleGUI extends JPanel {
 
 	private Student student;
@@ -44,7 +44,7 @@ public class ScheduleGUI extends JPanel {
 	private Object[][] getCourseData(){
 
 		Object[][] returnArray;
-		if(courses.size()!=0){
+		if(courses==null||courses.size()!=0){
 			returnArray =new Object[courses.size()][2];
 			for(int i=0;i<courses.size();i++){
 				returnArray[i][0]=courses.get(i).getCourseNum();
@@ -52,7 +52,7 @@ public class ScheduleGUI extends JPanel {
 			}
 		}
 		else{
-			returnArray=new String[2][1];
+			returnArray=new String[1][2];
 			returnArray[0][0]="No Current Classes";
 			returnArray[0][1]="N/A";
 		}
