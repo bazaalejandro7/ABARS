@@ -16,9 +16,11 @@ import javax.swing.WindowConstants;
 
 import jxl.read.biff.BiffException;
 /**
- * 
+ * Course: SE 300- 01
+ * Term: Fall 2014
+ * Final Project
  * @author courtneyfennell
- *
+ * @created October 29, 2014
  */
 @SuppressWarnings("serial")
 public class MainFrameGUI extends JFrame {
@@ -26,12 +28,14 @@ public class MainFrameGUI extends JFrame {
 	Student currStudent;
 	DegreeAuditGUI daGUI;
 	StudentProfileGUI spGUI;
-	RegisterGUI register;
+	RegisterPaneGUI register;
 	JPanel menu;
 	JFrame frame;
 	TranscriptGUI transcript;
 	BidGUI bidPanel;
+	ScheduleGUI schedule;
 	String degreeAuditCard;
+	String scheduleCard;
 	String registerCard;
 	String transcriptCard;
 	String bidPanelCard;
@@ -64,6 +68,11 @@ public class MainFrameGUI extends JFrame {
 		JButton transcriptButton = new JButton("View Transcript");
 		transcriptButton.addActionListener(new TranscriptListener());
 		menu.add(transcriptButton);
+		
+		menu.add(Box.createVerticalStrut(50));
+		JButton scheduleButton = new JButton("View Schedule");
+		scheduleButton.addActionListener(new ScheduleListener());
+		menu.add(scheduleButton);
 
 		menu.add(Box.createVerticalStrut(50));
 		JButton registerButton = new JButton("Register");
@@ -77,7 +86,7 @@ public class MainFrameGUI extends JFrame {
 
 		//add the menu bar
 		JMenuBar topMenu = new JMenuBar();
-		JMenu registrationItem = new JMenu("Registation");
+		JMenu registrationItem = new JMenu("Registration");
 		JMenu fileItem = new JMenu("File");
 
 		JMenuItem degreeAuditItem = new JMenuItem("Degree Audit");
@@ -91,6 +100,9 @@ public class MainFrameGUI extends JFrame {
 
 		JMenuItem bidItem = new JMenuItem("Bid");
 		bidItem.addActionListener(new BidListener());
+		
+		JMenuItem scheduleItem = new JMenuItem("View Schedule");
+		scheduleItem.addActionListener(new ScheduleListener());
 
 		JMenuItem logoutItem = new JMenuItem("Logout");
 		logoutItem.addActionListener(new LogoutListener());
@@ -102,6 +114,7 @@ public class MainFrameGUI extends JFrame {
 		//add the items to the menu bar
 		registrationItem.add(registerItem);
 		registrationItem.add(bidItem);
+		registrationItem.add(scheduleItem);
 
 		//add to the submenus
 		fileItem.add(degreeAuditItem);
@@ -114,17 +127,15 @@ public class MainFrameGUI extends JFrame {
 		topMenu.add(fileItem);
 		topMenu.add(registrationItem);
 
-
-
-
 		//Initialize all panels
 		middlePanel = new JPanel();
 		c1 = new CardLayout();
 		middlePanel.setLayout(c1);
 
-		register = new RegisterGUI(currStudent);
+		register = new RegisterPaneGUI(currStudent);
 		transcript = new TranscriptGUI(currStudent);
 		bidPanel = new BidGUI(currStudent);
+		schedule = new ScheduleGUI(currStudent);
 
 		try {
 			daGUI = new DegreeAuditGUI(currStudent);
@@ -134,15 +145,19 @@ public class MainFrameGUI extends JFrame {
 			e1.printStackTrace();
 
 		}
+		//add names to each card
 		degreeAuditCard = "Degree Audit";
 		registerCard = "registerCard";
 		transcriptCard = "TranscriptCard";
 		bidPanelCard = "Bid Panel Card";
+		scheduleCard = "Schedule Card";
 
+		//add paneles to the layout
 		middlePanel.add(daGUI, degreeAuditCard);
 		middlePanel.add(register, registerCard);
 		middlePanel.add(transcript, transcriptCard);
 		middlePanel.add(bidPanel, bidPanelCard);
+		middlePanel.add(schedule, scheduleCard);
 
 		//set up the frame appropriately
 		frame.add(topMenu, BorderLayout.NORTH);
@@ -207,6 +222,14 @@ public class MainFrameGUI extends JFrame {
 			System.exit(1);
 
 		}
+		
+	}
+	class ScheduleListener implements ActionListener { // Inner class
+		public void actionPerformed(ActionEvent e) {
+			c1.show(middlePanel, scheduleCard);
+
+		}
+		
 	}
 
 }

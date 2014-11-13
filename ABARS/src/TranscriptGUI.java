@@ -5,9 +5,11 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 /**
- * 
+ * Course: SE 300- 01
+ * Term: Fall 2014
+ * Final Project
  * @author courtneyfennell
- *
+ * @created October 29, 2014
  */
 
 @SuppressWarnings("serial")

@@ -2,17 +2,20 @@ import java.awt.GridLayout;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 import jxl.read.biff.BiffException;
 
 /**
- * 
+ * Course: SE 300- 01
+ * Term: Fall 2014
+ * Final Project
  * @author courtneyfennell
- *
+ * @created October 29, 2014
  */
+@SuppressWarnings("serial")
 public class RegisterGUI extends JPanel {
 
 	Student currStudent;
@@ -36,7 +39,9 @@ public class RegisterGUI extends JPanel {
 		i = gradedCourses.size();
 
 		//add layout manager
-		this.setLayout(new GridLayout((allCourses.size()-gradedCourses.size()), 1));
+		this.setLayout(new GridLayout((30), 2));
+		//TODO figure out how to set the layout so that it works for all students
+		
 		this.add(new JLabel("Course Name:"));
 		this.add(new JLabel("Credits:"));
 
@@ -44,7 +49,7 @@ public class RegisterGUI extends JPanel {
 		for(;i<allCourses.size();i++){
 
 			Course currCourse = allCourses.get(i);
-			JLabel currLabel = new JLabel(currCourse.getCourseNum());
+			JRadioButton currLabel = new JRadioButton(currCourse.getCourseNum());
 
 
 			this.add(currLabel);

@@ -1,0 +1,15 @@
+import java.io.IOException;
+
+import jxl.read.biff.BiffException;
+
+/**
+ * 
+ * @author courtneyfennell
+ *
+ */
+public class RegisterPaneGUI {
+
+	public RegisterPaneGUI(Student student) throws BiffException, IOException{
+		RegisterGUI register = new RegisterGUI(student);
+	}
+}
