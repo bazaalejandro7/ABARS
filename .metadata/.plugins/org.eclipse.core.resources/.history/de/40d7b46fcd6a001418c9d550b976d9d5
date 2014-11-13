@@ -1,0 +1,214 @@
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+
+import jxl.read.biff.BiffException;
+/**
+ * Course: SE 300- 01
+ * Term: Fall 2014
+ * Final Project
+ * @author courtneyfennell
+ * October 29, 2014
+ */
+@SuppressWarnings("serial")
+public class MainFrameGUI extends JFrame {
+
+	Student currStudent;
+	DegreeAuditGUI daGUI;
+	StudentProfileGUI spGUI;
+	RegisterPaneGUI register;
+	JPanel menu;
+	JFrame frame;
+	TranscriptGUI transcript;
+	BidGUI bidPanel;
+	String degreeAuditCard;
+	String registerCard;
+	String transcriptCard;
+	String bidPanelCard;
+	JPanel middlePanel;
+	CardLayout c1;
+/**
+ * 
+ * @param student
+ * @throws BiffException
+ * @throws IOException
+ */
+	public MainFrameGUI(Student student) throws BiffException, IOException{
+		currStudent = student;
+
+		daGUI = new DegreeAuditGUI(currStudent);
+		spGUI = new StudentProfileGUI(currStudent);
+
+		frame = new JFrame();
+		menu = new JPanel();
+
+
+		//set up menu panel
+		menu.setLayout(new BoxLayout( menu, BoxLayout.Y_AXIS ));
+		menu.add(Box.createVerticalStrut(150));
+		JButton degreeAuditButton = new JButton("View Degree Audit");
+		degreeAuditButton.addActionListener(new DegreeAuditListener());
+		menu.add(degreeAuditButton);
+
+		menu.add(Box.createVerticalStrut(50));
+		JButton transcriptButton = new JButton("View Transcript");
+		transcriptButton.addActionListener(new TranscriptListener());
+		menu.add(transcriptButton);
+
+		menu.add(Box.createVerticalStrut(50));
+		JButton registerButton = new JButton("Register");
+		registerButton.addActionListener(new RegisterListener());
+		menu.add(registerButton);
+
+		menu.add(Box.createVerticalStrut(50));
+		JButton bidButton = new JButton("Bids");
+		bidButton.addActionListener(new BidListener());
+		menu.add(bidButton);
+
+		//add the menu bar
+		JMenuBar topMenu = new JMenuBar();
+		JMenu registrationItem = new JMenu("Registation");
+		JMenu fileItem = new JMenu("File");
+
+		JMenuItem degreeAuditItem = new JMenuItem("Degree Audit");
+		degreeAuditItem.addActionListener(new DegreeAuditListener());
+
+		JMenuItem transriptItem = new JMenuItem("View Transcript");
+		transriptItem.addActionListener(new TranscriptListener());
+
+		JMenuItem registerItem = new JMenuItem("Register");
+		registerItem.addActionListener(new RegisterListener());
+
+		JMenuItem bidItem = new JMenuItem("Bid");
+		bidItem.addActionListener(new BidListener());
+
+		JMenuItem logoutItem = new JMenuItem("Logout");
+		logoutItem.addActionListener(new LogoutListener());
+
+		JMenuItem exitItem = new JMenuItem("Exit");
+		exitItem.addActionListener(new ExitListener());
+
+
+		//add the items to the menu bar
+		registrationItem.add(registerItem);
+		registrationItem.add(bidItem);
+
+		//add to the submenus
+		fileItem.add(degreeAuditItem);
+		fileItem.add(transriptItem);
+		fileItem.add(logoutItem);
+		fileItem.add(exitItem);
+
+
+		//add to the menu
+		topMenu.add(fileItem);
+		topMenu.add(registrationItem);
+
+
+
+
+		//Initialize all panels
+		middlePanel = new JPanel();
+		c1 = new CardLayout();
+		middlePanel.setLayout(c1);
+
+		register = new RegisterPaneGUI(currStudent);
+		transcript = new TranscriptGUI(currStudent);
+		bidPanel = new BidGUI(currStudent);
+
+		try {
+			daGUI = new DegreeAuditGUI(currStudent);
+
+		} catch (BiffException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+
+		}
+		degreeAuditCard = "Degree Audit";
+		registerCard = "registerCard";
+		transcriptCard = "TranscriptCard";
+		bidPanelCard = "Bid Panel Card";
+
+		middlePanel.add(daGUI, degreeAuditCard);
+		middlePanel.add(register, registerCard);
+		middlePanel.add(transcript, transcriptCard);
+		middlePanel.add(bidPanel, bidPanelCard);
+
+		//set up the frame appropriately
+		frame.add(topMenu, BorderLayout.NORTH);
+		frame.add(spGUI, BorderLayout.EAST);
+		frame.add(menu, BorderLayout.WEST);
+		frame.add(middlePanel, BorderLayout.CENTER);
+		frame.setVisible(true);
+
+		//sets the location, close operation and set the size
+		frame.setLocation(220,75); 
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setSize(900, 700);
+
+
+
+
+
+
+	}
+	/**
+	 * 
+	 * @author courtneyfennell
+	 *
+	 */
+	class DegreeAuditListener implements ActionListener { // Inner class
+
+		public void actionPerformed(ActionEvent e){
+			c1.show(middlePanel, degreeAuditCard);
+
+
+		}
+
+	}
+
+	class RegisterListener implements ActionListener { // Inner class
+		public void actionPerformed(ActionEvent e) {
+			c1.show(middlePanel, registerCard);
+
+
+		}
+	}
+	class TranscriptListener implements ActionListener { // Inner class
+		public void actionPerformed(ActionEvent e) {
+			c1.show(middlePanel, transcriptCard);
+
+
+		}
+	}
+	class BidListener implements ActionListener { // Inner class
+		public void actionPerformed(ActionEvent e) {
+			c1.show(middlePanel, bidPanelCard);
+		}
+	}
+	class LogoutListener implements ActionListener { // Inner class
+		public void actionPerformed(ActionEvent e) {
+			//TODO logout
+
+		}
+	}
+	class ExitListener implements ActionListener { // Inner class
+		public void actionPerformed(ActionEvent e) {
+			System.exit(1);
+
+		}
+	}
+
+}

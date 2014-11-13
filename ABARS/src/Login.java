@@ -13,6 +13,12 @@ public class Login {
 	
 	private String username, password;
 	
+	/**
+	 * @author Matthew Alpert
+	 * @param username - input username
+	 * @param password - input password
+	 * Constructor for the login class. Must have a username and password input
+	 */
 	public Login(String username, String password){
 		this.username = username;
 		this.password = password;
@@ -20,14 +26,14 @@ public class Login {
 	
 	
 	/**
-	 * 
+	 * @author Matthew Alpert
 	 * @return the student associated with the input login information
 	 */
 	public Student ValidateLoginStudent(){
 
 		StudentDatabase studentDB = null;
 		try {
-			studentDB = new StudentDatabase();
+			studentDB = new StudentDatabase(); //creates temporary student database
 		} catch (BiffException | IOException e) {
 			e.printStackTrace();
 		}
@@ -38,8 +44,9 @@ public class Login {
 	
 	
 	/**
-	 * 
+	 * @author Matthew Alpert
 	 * @return true if the input login information is valid, and false if the input login information is false
+	 * Secondary method
 	 */
 	public boolean ValidateLoginBoolean(){
 		

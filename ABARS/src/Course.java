@@ -22,13 +22,13 @@ public class Course {
 
 	/**
 	 * Creates the course object
-	 * @param courseNum - course number
+	 * @param courseNum - designated course number
 	 * @param credits -  number of credit hours
 	 * @param corequisite - any corequisite classes needed for this class
 	 * @param prerequisites - any prerequisite classes needed for this class
-	 * @param courseDescription - the courses description
+	 * @param courseDescription - the course's description
 	 * @param timeSlot - which time slot the
-	 * @param dataColCourse - column in database that the course is held 
+	 * @param dataColCourse - column in database that the course is held (for use of writing to the database)
 	 */
 	public Course(String courseNum, int credits, Course corequisite, ArrayList<Course> prerequisites, String courseDescription, int timeSlot, int dataColCourse){
 		this.courseNum = courseNum;
@@ -40,50 +40,99 @@ public class Course {
 		this.dataColCourse = dataColCourse;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return the course description
+	 */
 	public String getCourseDescription() {
 		return courseDescription;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param courseDescription - the course's description
+	 */
 	public void setCourseDescription(String courseDescription) {
 		this.courseDescription = courseDescription;
 	}
-
+	
+	/**
+	 * @author Matthew Alpert
+	 * @return the course number
+	 */
 	public String getCourseNum() {
 		return courseNum;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param courseNum - designated course number
+	 */
 	public void setCourseNum(String courseNum) {
 		this.courseNum = courseNum;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return the number of credits
+	 */
 	public int getCredits() {
 		return credits;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param credits - the number of credits
+	 */
 	public void setCredits(int credits) {
 		this.credits = credits;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return an ArrayList of Course objects that are prerequisite for this Course
+	 */
 	public ArrayList<Course> getPrerequisites() {
 		return prerequisites;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param prerequisites - the courses that are prerequisites for this course
+	 */
 	public void setPrerequisites(ArrayList<Course> prerequisites) {
 		this.prerequisites = prerequisites;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return any corequisite Course objects needed for this class
+	 */
 	public Course getCorequisite() {
 		return corequisite;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @param corequisite - corequisite Course objects
+	 */
 	public void setCorequisite(Course corequisite) {
 		this.corequisite = corequisite;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return the time slot that this course takes
+	 */
 	public int getTimeSlot() {
 		return timeSlot;
 	}
 
+	/**
+	 * @author Matthew Alpert
+	 * @return the column that the course resides in
+	 * This is for use of writing to the database
+	 */
 	public int getDataColCourse() {
 		return dataColCourse;
 	}

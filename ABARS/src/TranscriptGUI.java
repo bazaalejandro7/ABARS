@@ -5,9 +5,11 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 /**
- * 
+ * Course: SE 300- 01
+ * Term: Fall 2014
+ * Final Project
  * @author courtneyfennell
- *
+ * @created October 29, 2014
  */
 
 @SuppressWarnings("serial")
@@ -15,7 +17,7 @@ public class TranscriptGUI extends JPanel{
 	ArrayList<GradedCourse> gradedCourses;
 	Student currStudent;
 	
-	/**
+	/**this constructor creates the transcript panel that displays all the classes that a student has taken.
 	 * 
 	 * @param student
 	 */

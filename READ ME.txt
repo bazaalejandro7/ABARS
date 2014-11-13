@@ -1,0 +1,1 @@
+You will need to add the JExcelAPI to your library. To do this, you need to configure your build path and add external jars. Then, add the jxl.jar file inside the jexcelapi folder.
