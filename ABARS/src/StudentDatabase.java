@@ -7,14 +7,23 @@ import jxl.read.biff.BiffException;
 
 
 /**
- * @author Matthew Alpert
- * @version 1.0
+ * @author Matthew Alpert and Alejandro Baza
+ * @version 1.5
  * @created 16-Oct-2014 3:32:01 AM
+ * This class utilizes the open source API JExcel.
+ * Using JExcel, this class reads in and creates all
+ * the students objects in the database.
  */
 public class StudentDatabase {
 
 	private ArrayList<Student> studentList;
 
+	/**
+	 * @author Matthew Alpert
+	 * @throws BiffException
+	 * @throws IOException
+	 * Constructs the student database
+	 */
 	public StudentDatabase() throws BiffException, IOException{
 		Workbook workbook = Workbook.getWorkbook(new File("Student Database.xls"));
 		Sheet sheet = workbook.getSheet(0);
@@ -32,16 +41,16 @@ public class StudentDatabase {
 //		adding in all the students in the database
 		while(!(cur[0].getContents().equals("end"))){
 			
-			username = cur[0].getContents();
-			password = cur[1].getContents();
-			numID = Integer.parseInt(cur[2].getContents());
-			name = cur[3].getContents();
-			address = cur[4].getContents();
-			numPoints = Integer.parseInt(cur[5].getContents());
+			username = cur[0].getContents(); //username
+			password = cur[1].getContents(); //password
+			numID = Integer.parseInt(cur[2].getContents()); //ID number
+			name = cur[3].getContents(); //student name
+			address = cur[4].getContents(); // personal address
+			numPoints = Integer.parseInt(cur[5].getContents()); //number of points available to bid
 			i = 6;
 			coursesTaken.clear();
 			
-			
+//			creates the list of the graded courses a student has taken
 			while(i < topRow.length && topRow[i].getType() != CellType.EMPTY){
 				if(cur[i].getType() == CellType.LABEL){
 					coursesTaken.add(addGradedCourse(courseList.getCourse(topRow[i].getContents()), cur[i].getContents()));
@@ -49,6 +58,7 @@ public class StudentDatabase {
 				i++;
 			}
 			
+//			creates the student object and adds it to the list
 			newStudent = new Student(coursesTaken, numID, numPoints, password, username, name, address);
 			studentList.add(newStudent);
 			countRow++;
@@ -56,7 +66,12 @@ public class StudentDatabase {
 		}
 	}
 
-
+	/**
+	 * @author Matthew Alpert
+	 * @param username 
+	 * @return given the username, it searches for a student with given username.
+	 * Returns the student object if a match is found, otherwise returns null.
+	 */
 	private Student searchFor(String username){
 
 		int i = 0;
@@ -73,8 +88,10 @@ public class StudentDatabase {
 	}
 
 	/**
-	 * Returns a validation to the Login class whether or not the user information
-	 * will grant access.
+	 * @author Matthew Alpert
+	 * @param username - input username
+	 * @param password - input password
+	 * @return validation to the Login class whether or not the user information will grant access.
 	 */
 	public Student Validate(String username, String password){
 		Student user = searchFor(username);
@@ -84,9 +101,13 @@ public class StudentDatabase {
 			return null;
 		}
 	}
-	
-	
-	
+
+	/**
+	 * @author Matthew Alpert
+	 * @param taken - input taken Course object
+	 * @param grade - letter grade received in the course
+	 * @return a GradedCourse object
+	 */
 	private GradedCourse addGradedCourse(Course taken, String grade){
 		
 		return new GradedCourse(taken.getCourseNum(), taken.getCredits(), taken.getCorequisite(), 

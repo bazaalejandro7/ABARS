@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+
+
+/**
+ * 
+ * @author Matthew Alpert
+ * Subclass of Course. Contains the points bid on
+ * each course they wish to take. The higher the 
+ * bid value, the better the chance to get into the course.
+ */
+public class BidCourse extends Course {
+
+	private int bid;
+	
+	public BidCourse(String courseNum, int credits, Course corequisite,
+			ArrayList<Course> prerequisites, String courseDescription,
+			int timeSlot, int dataColStudent, int bid) {
+		super(courseNum, credits, corequisite, prerequisites, courseDescription,
+				timeSlot, dataColStudent);
+		this.bid = bid;
+	}
+
+	/**
+	 * 
+	 * @return number of points bid to a course
+	 */
+	public int getBid() {
+		return bid;
+	}
+
+	/**
+	 * 
+	 * @param number of points to bid on a course
+	 */
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
+
+
+}
