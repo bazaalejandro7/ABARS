@@ -55,15 +55,21 @@ public class Student {
 	 * @author Matthew Alpert
 	 * @param course - the course the student is bidding on to take for the next semester, will add to the database
 	 * @param bidPoints - number of points the student is using for the bid on the course, will add to the database
+	 * @return boolean - whether or not the student has successfully added the class
+	 * Edit 11/15/14 by Courtney Fennell - Change return value from void to boolean and fix a logical error.
 	 */
-	public void addCourse(Course course, int bidPoints){
-		if(coursesTaken.contains(course) && bidPoints <= numPoints){
+	public boolean addCourse(Course course, int bidPoints){
+		if(!coursesTaken.contains(course) && bidPoints <= numPoints){
 			bidCourses.add(new BidCourse(course.getCourseNum(), course.getCredits(),
 					course.getCorequisite(), course.getPrerequisites(),
 					course.getCourseDescription(), course.getTimeSlot(), course.getDataColCourse(), bidPoints));
+			numPoints-=bidPoints;
+			System.out.println(bidPoints);
+			System.out.println(bidCourses);
+			return true;
 //			write to database
 		}else{
-			//error message
+			return false;
 		}
 		
 	}
@@ -177,6 +183,13 @@ public class Student {
 	 */
 	public ArrayList<GradedCourse> getCoursesTaken(){
 		return coursesTaken;
+	}
+	/**
+	 * @author Courtney Fennell
+	 * @return ArrayList of type BidCourse which hold a list of courses the student has bid on.
+	 */
+	public ArrayList<BidCourse> getBidCourses(){
+		return bidCourses;
 	}
 	
 }//end Student
