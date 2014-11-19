@@ -23,7 +23,6 @@ public class AuctionRunner {
 	 * This method puts the students that bid for courses into an arraylist
 	 *
 	 */
-	
 	public void StudentBidList() {
 		
 	}
@@ -51,7 +50,6 @@ public class AuctionRunner {
 	 * This method adds courses to the student's current schedule
 	 * 
 	 */
-	
 	public void AddCourseToSchedule() {
 		
 	}

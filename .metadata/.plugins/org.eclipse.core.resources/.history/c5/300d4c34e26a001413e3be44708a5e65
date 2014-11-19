@@ -23,14 +23,13 @@ public class AuctionRunner {
 	 * This method puts the students that bid for courses into an arraylist
 	 *
 	 */
-	
 	public void StudentBidList() {
 		
 	}
 	
 	/**
 	 * @author Alejandro Baza
-	 * This method sorts the list of students that bid for courses alphabetically
+	 * This method sorts the list of students that bid for courses
 	 * 
 	 */
 	
@@ -51,7 +50,6 @@ public class AuctionRunner {
 	 * This method adds courses to the student's current schedule
 	 * 
 	 */
-	
 	public void AddCourseToSchedule() {
 		
 	}

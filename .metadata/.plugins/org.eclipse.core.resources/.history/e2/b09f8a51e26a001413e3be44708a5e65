@@ -6,7 +6,7 @@ import jxl.read.biff.BiffException;
  * 
  * @author Courtney Fennell
  * 
- * This class acts as a starter for the entire program. It starts the program by containing the main method and running it
+ * This class acts as a starter for the entire program. It starts the program by containing the main method
  *
  */
 public class Starter {
