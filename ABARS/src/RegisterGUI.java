@@ -67,33 +67,37 @@ public class RegisterGUI extends JPanel {
 		}
 	}
 
-
+/**
+ * 
+ * @author courtneyfennell
+ *
+ */
 	class Listener implements ActionListener { // Inner class
 		public void actionPerformed(ActionEvent e) {
 
 			int action = Integer.parseInt(e.getActionCommand());
 			Course chosenCourse = allCourses.get(action);
-		
+
 			String text = String.format("You have %d points.\nEnter the number of points you want to bid:", currStudent.getNumPoints());
 			String input = JOptionPane.showInputDialog(text);
 
-					if (input !=null) {
-						boolean success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
-						if(success){
-							ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
-							JOptionPane.showMessageDialog(null, 
-									"You have successfully added your class!", 
-									"Add Class Confimation", JOptionPane.PLAIN_MESSAGE , image);
+			if (input !=null) {
+				boolean success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+				if(success){
+					ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
+					JOptionPane.showMessageDialog(null, 
+							"You have successfully added your class!", 
+							"Add Class Confimation", JOptionPane.PLAIN_MESSAGE , image);
 
-						}
-						else{
-							ImageIcon image = new ImageIcon(getClass().getResource("127.gif"));
-							JOptionPane.showMessageDialog(null, 
-									"I'm sorry, you cannot add that class", 
-									"Add Class Error", JOptionPane.PLAIN_MESSAGE , image);
-						}
-					
-					}
+				}
+				else{
+					ImageIcon image = new ImageIcon(getClass().getResource("127.gif"));
+					JOptionPane.showMessageDialog(null, 
+							"I'm sorry, you cannot add that class", 
+							"Add Class Error", JOptionPane.PLAIN_MESSAGE , image);
+				}
+
+			}
 		}
 
 	}

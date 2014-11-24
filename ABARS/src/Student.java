@@ -64,6 +64,7 @@ public class Student {
 		this.dataRow = dataRow;
 		
 		//just to get it working for now
+	/*
 		try {
 			workbook = Workbook.getWorkbook(new File("Student Database.xls"));
 			copy = Workbook.createWorkbook(new File("Student Database Copy.xls"));
@@ -72,6 +73,7 @@ public class Student {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 	}
 
 	/**
@@ -87,8 +89,7 @@ public class Student {
 					course.getCorequisite(), course.getPrerequisites(),
 					course.getCourseDescription(), course.getTimeSlot(), course.getDataColCourse(), bidPoints));
 			numPoints-=bidPoints;
-			System.out.println(bidPoints);
-			System.out.println(bidCourses);
+			
 			return true;
 //			write to database
 			

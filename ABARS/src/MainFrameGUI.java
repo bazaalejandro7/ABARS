@@ -41,12 +41,12 @@ public class MainFrameGUI extends JFrame {
 	String bidPanelCard;
 	JPanel middlePanel;
 	CardLayout c1;
-/** This constructor creates the main Frame GUI that holds all of the GUI components. 
- * 
- * @param student
- * @throws BiffException
- * @throws IOException
- */
+	/** This constructor creates the main Frame GUI that holds all of the GUI components. 
+	 * 
+	 * @param student
+	 * @throws BiffException
+	 * @throws IOException
+	 */
 	public MainFrameGUI(Student student) throws BiffException, IOException{
 		currStudent = student;
 
@@ -68,7 +68,7 @@ public class MainFrameGUI extends JFrame {
 		JButton transcriptButton = new JButton("View Transcript");
 		transcriptButton.addActionListener(new TranscriptListener());
 		menu.add(transcriptButton);
-		
+
 		menu.add(Box.createVerticalStrut(50));
 		JButton scheduleButton = new JButton("View Schedule");
 		scheduleButton.addActionListener(new ScheduleListener());
@@ -100,7 +100,7 @@ public class MainFrameGUI extends JFrame {
 
 		JMenuItem bidItem = new JMenuItem("Bid");
 		bidItem.addActionListener(new BidListener());
-		
+
 		JMenuItem scheduleItem = new JMenuItem("View Schedule");
 		scheduleItem.addActionListener(new ScheduleListener());
 
@@ -208,14 +208,19 @@ public class MainFrameGUI extends JFrame {
 	}
 	class BidListener implements ActionListener { // Inner class
 		public void actionPerformed(ActionEvent e) {
-			bidPanel = null;
 			try {
-				bidPanel = new BidGUI(currStudent);
+				BidGUI newBidPanel = bidPanel.setupPanel();
+				if(newBidPanel!=null){
+					middlePanel.remove(bidPanel);
+					bidPanel = newBidPanel;
+					middlePanel.add(bidPanel, bidPanelCard);
+					c1.show(middlePanel, bidPanelCard);
+				}
 			} catch (BiffException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			c1.show(middlePanel, bidPanelCard);
+
 		}
 	}
 	class LogoutListener implements ActionListener { // Inner class
@@ -229,14 +234,14 @@ public class MainFrameGUI extends JFrame {
 			System.exit(1);
 
 		}
-		
+
 	}
 	class ScheduleListener implements ActionListener { // Inner class
 		public void actionPerformed(ActionEvent e) {
 			c1.show(middlePanel, scheduleCard);
 
 		}
-		
+
 	}
 
 }
