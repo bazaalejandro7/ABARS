@@ -1,5 +1,11 @@
 
 import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+
+import jxl.*;
+import jxl.read.biff.BiffException;
+import jxl.write.*;
 
 
 
@@ -27,7 +33,12 @@ public class Student {
 	private String password;
 	private String username;
 	private String name, address;
-
+	private int dataRow;
+	Workbook workbook;
+	WritableWorkbook copy;
+	WritableSheet writeSheet;
+	WritableCell writeCell;
+	
 	/**
 	 * @author Matthew Alpert
 	 * @param coursesTaken - ArrayList of type GradedCourse which hold a list of courses graded and taken. Used in transcript
@@ -37,9 +48,10 @@ public class Student {
 	 * @param username - student's login username
 	 * @param name - student's personal name
 	 * @param address - student's personal address
+	 * @param dataRow - for database use, indicates the row the student is located in
 	 */
-	public Student(ArrayList<GradedCourse> coursesTaken, int numID, int numPoints,
-			String password, String username, String name, String address) {
+	public Student(ArrayList<GradedCourse> coursesTaken, ArrayList<BidCourse> bidCourses, ArrayList<Course> currentSchedule,int numID, int numPoints,
+			String password, String username, String name, String address, int dataRow) {
 		this.coursesTaken = coursesTaken;
 		this.numID = numID;
 		this.numPoints = numPoints;
@@ -47,23 +59,41 @@ public class Student {
 		this.username = username;
 		this.name = name;
 		this.address = address;
-		bidCourses = new ArrayList<BidCourse>();
-		currentSchedule = new ArrayList<Course>();
+		this.bidCourses = bidCourses;
+		this.currentSchedule = currentSchedule;
+		this.dataRow = dataRow;
+		
+		//just to get it working for now
+		try {
+			workbook = Workbook.getWorkbook(new File("Student Database.xls"));
+			copy = Workbook.createWorkbook(new File("Student Database Copy.xls"));
+			writeSheet = copy.getSheet(0);
+		} catch (BiffException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * @author Matthew Alpert
 	 * @param course - the course the student is bidding on to take for the next semester, will add to the database
 	 * @param bidPoints - number of points the student is using for the bid on the course, will add to the database
+	 * @return boolean - whether or not the student has successfully added the class
+	 * Edit 11/15/14 by Courtney Fennell - Change return value from void to boolean and fix a logical error.
 	 */
-	public void addCourse(Course course, int bidPoints){
-		if(coursesTaken.contains(course) && bidPoints <= numPoints){
+	public boolean addCourse(Course course, int bidPoints){
+		if(!coursesTaken.contains(course) && bidPoints <= numPoints){
 			bidCourses.add(new BidCourse(course.getCourseNum(), course.getCredits(),
 					course.getCorequisite(), course.getPrerequisites(),
 					course.getCourseDescription(), course.getTimeSlot(), course.getDataColCourse(), bidPoints));
+			numPoints-=bidPoints;
+			System.out.println(bidPoints);
+			System.out.println(bidCourses);
+			return true;
 //			write to database
+			
 		}else{
-			//error message
+			return false;
 		}
 		
 	}
@@ -76,6 +106,7 @@ public class Student {
 		numPoints += dropCourse.getBid();
 		bidCourses.remove(dropCourse);
 //		write to database
+		
 	}
 
 	/**
@@ -177,6 +208,23 @@ public class Student {
 	 */
 	public ArrayList<GradedCourse> getCoursesTaken(){
 		return coursesTaken;
+	}
+	/**
+	 * @author Courtney Fennell
+	 * @return ArrayList of type BidCourse which hold a list of courses the student has bid on.
+	 */
+	public ArrayList<BidCourse> getBidCourses(){
+		return bidCourses;
+	}
+	
+	
+//	finish up later
+	private void writeDatabase(int col, String label){
+		writeCell = writeSheet.getWritableCell(dataRow, col);
+	}
+	
+	private void writeDatabase(int col, int num){
+		
 	}
 	
 }//end Student

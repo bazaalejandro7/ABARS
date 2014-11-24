@@ -208,6 +208,13 @@ public class MainFrameGUI extends JFrame {
 	}
 	class BidListener implements ActionListener { // Inner class
 		public void actionPerformed(ActionEvent e) {
+			bidPanel = null;
+			try {
+				bidPanel = new BidGUI(currStudent);
+			} catch (BiffException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			c1.show(middlePanel, bidPanelCard);
 		}
 	}

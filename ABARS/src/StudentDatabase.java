@@ -8,7 +8,7 @@ import jxl.read.biff.BiffException;
 
 /**
  * @author Matthew Alpert and Alejandro Baza
- * @version 1.5
+ * @version 1.8
  * @created 16-Oct-2014 3:32:01 AM
  * This class utilizes the open source API JExcel.
  * Using JExcel, this class reads in and creates all
@@ -28,8 +28,13 @@ public class StudentDatabase {
 		Workbook workbook = Workbook.getWorkbook(new File("Student Database.xls"));
 		Sheet sheet = workbook.getSheet(0);
 		CourseDatabase courseList = new CourseDatabase();
-		Student newStudent;
+		Student newStudent; //student object holder
+		
+		//arrays of types of course objects inside a student object
 		ArrayList<GradedCourse> coursesTaken = new ArrayList<GradedCourse>();
+		ArrayList<BidCourse> bidCourse = new ArrayList<BidCourse>();
+		ArrayList<Course> currentSchedule = new ArrayList<Course>();
+		
 		int numID, numPoints;
 		String password, username, name, address;
 		studentList = new ArrayList<Student>();
@@ -37,8 +42,8 @@ public class StudentDatabase {
 		Cell[] cur = sheet.getRow(1);
 		int countRow = 1;
 		int i;
-		
-//		adding in all the students in the database
+
+		//		adding in all the students in the database
 		while(!(cur[0].getContents().equals("end"))){
 			
 			username = cur[0].getContents(); //username
@@ -48,18 +53,31 @@ public class StudentDatabase {
 			address = cur[4].getContents(); // personal address
 			numPoints = Integer.parseInt(cur[5].getContents()); //number of points available to bid
 			i = 6;
+			//clear arrays of course types
 			coursesTaken.clear();
-			
-//			creates the list of the graded courses a student has taken
+			bidCourse.clear();
+			currentSchedule.clear();
+
+			//creates the list of all courses types a student has taken, taking, or bid for
 			while(i < topRow.length && topRow[i].getType() != CellType.EMPTY){
+
+				//the contents will be a letter if the course is current or already taken
 				if(cur[i].getType() == CellType.LABEL){
-					coursesTaken.add(addGradedCourse(courseList.getCourse(topRow[i].getContents()), cur[i].getContents()));
+					if(cur[i].getContents().equals("I")){ //if the course has an I, it means it is a current course
+						currentSchedule.add(courseList.getCourse(topRow[i].getContents()));
+					}else{
+						coursesTaken.add(addGradedCourse(courseList.getCourse(topRow[i].getContents()), cur[i].getContents()));
+					}
+					
+				//if the course is not currently in the schedule or already taken, it could be a bidded course //make this part more efficient in the future
+				}else if((cur[i].getType() == CellType.NUMBER) && (Integer.parseInt(cur[i].getContents()) > 0)){
+					bidCourse.add(addBidCourse(courseList.getCourse(topRow[i].getContents()), Integer.parseInt(cur[i].getContents())));
 				}
 				i++;
 			}
-			
-//			creates the student object and adds it to the list
-			newStudent = new Student(coursesTaken, numID, numPoints, password, username, name, address);
+
+			//			creates the student object and adds it to the list
+			newStudent = new Student(coursesTaken, bidCourse, currentSchedule, numID, numPoints, password, username, name, address, countRow-1);
 			studentList.add(newStudent);
 			countRow++;
 			cur = sheet.getRow(countRow);
@@ -109,18 +127,31 @@ public class StudentDatabase {
 	 * @return a GradedCourse object
 	 */
 	private GradedCourse addGradedCourse(Course taken, String grade){
-		
+
 		return new GradedCourse(taken.getCourseNum(), taken.getCredits(), taken.getCorequisite(), 
-				taken.getPrerequisites(), grade, taken.getTimeSlot(), taken.getDataColCourse(), grade);
-		
+				taken.getPrerequisites(), taken.getCourseDescription(), taken.getTimeSlot(), taken.getDataColCourse(), grade);
+
 	}
-	 
+
+	/**
+	 * @author Matthew Alpert
+	 * @param bidC - input of bid Course object
+	 * @param bidPoints - number of bidded points
+	 * @return a BidCourse object
+	 */
+	private BidCourse addBidCourse(Course bidC, int bidPoints){
+		return new BidCourse(bidC.getCourseNum(), bidC.getCredits(), bidC.getCorequisite(), 
+				bidC.getPrerequisites(), bidC.getCourseDescription(), bidC.getTimeSlot(), bidC.getDataColCourse(), bidPoints);
+	}
+	
+	
+	
 	/**
 	 * @author Alejandro Baza
 	 * This method puts the courses that the student bid for into a list that will be the schedule
 	 * 
 	 */
-	
+
 	public void ScheduleList() {
 	}
 }
