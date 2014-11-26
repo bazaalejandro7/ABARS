@@ -1,7 +1,13 @@
 INDEX VERSION 1.127+/Users/Rasgriz3/Documents/ABARS/.metadata/.plugins/org.eclipse.jdt.core
 2178737305.index
 2793427791.index
+<<<<<<< HEAD
 1769317737.index
+=======
+1271342938.index
+3885538147.index
+31031388.index
+>>>>>>> 3a67a4cbb6db45d1aa848a2065efe41d35284a24
 1687393277.index
 1271342938.index
 1542969262.index

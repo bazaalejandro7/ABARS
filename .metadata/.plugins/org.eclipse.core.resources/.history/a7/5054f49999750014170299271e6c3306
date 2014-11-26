@@ -1,0 +1,17 @@
+import javax.swing.JPanel;
+
+
+/**
+ * @author courtneyfennell
+ *@created November 24, 2014
+ */
+public class AdminGUI extends JPanel {
+
+	
+	/**
+	 * AdminGUI constructor 
+	 */
+	public AdminGUI(){
+		
+	}
+}
