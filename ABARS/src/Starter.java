@@ -13,7 +13,11 @@ public class Starter {
 
 	public static void main(String[] args) throws BiffException, IOException {
 		Student currStudent =LoginGUI.loginInStudent();
-		MainFrameGUI main = new MainFrameGUI(currStudent);
+		//if(currStudent.isInstanceof(Student))
+		new MainFrameGUI(currStudent);
+		//else
+		//new AdminGUI();
+			
 
 	}
 

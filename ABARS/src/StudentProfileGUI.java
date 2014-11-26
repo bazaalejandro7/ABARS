@@ -2,10 +2,10 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 //Class StudentProfileGui
 //A Panel that displays the student's information
@@ -34,13 +34,13 @@ public class StudentProfileGUI extends JPanel {
 	 * @param Student student
 	 */
 	public StudentProfileGUI(Student student){
-		JButton logoutButton;
+		JButton logoutButton,changePassButton;
 		JPanel tempPanel=new JPanel();
 
 		this.student=student;
 		
 		this.setLayout(new GridLayout(2,1));
-		tempPanel.setLayout(new GridLayout(5,1));
+		tempPanel.setLayout(new GridLayout(6,1));
 
 		tempPanel.add(new JLabel("Student Information"));
 
@@ -49,9 +49,12 @@ public class StudentProfileGUI extends JPanel {
 			tempPanel.add(dataLabels[i]);
 		}
 
-
+		changePassButton=new JButton("Change Password");
 		logoutButton=new JButton("Logout");
-
+		
+		changePassButton.addActionListener(new ChangePasswordListener());
+		
+		tempPanel.add(changePassButton);
 		tempPanel.add(logoutButton);
 		logoutButton.addActionListener(new LogoutListener());
 		
@@ -70,7 +73,7 @@ public class StudentProfileGUI extends JPanel {
 	/***
 	 * Void method that updates the panel Labels
 	 */
-	public void updateData(){
+	private void updateData(){
 		dataLabels[0].setText(labelPrefixes[0]+student.getUsername());
 		dataLabels[1].setText(labelPrefixes[1]+student.getName());
 		dataLabels[2].setText(labelPrefixes[2]+student.getNumID());
@@ -84,11 +87,15 @@ public class StudentProfileGUI extends JPanel {
 	
 	class LogoutListener implements ActionListener { 
 		public void actionPerformed(ActionEvent e) {
-			System.exit(1);
+			System.exit(0);
 
 		}
 	}
-
+	class ChangePasswordListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			ChangePasswordPanel.changePasswordGui(student);
+		}
+	}
 
 
 

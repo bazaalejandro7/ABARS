@@ -64,7 +64,6 @@ public class Student {
 		this.dataRow = dataRow;
 		
 		//just to get it working for now
-	/*
 		try {
 			workbook = Workbook.getWorkbook(new File("Student Database.xls"));
 			copy = Workbook.createWorkbook(new File("Student Database Copy.xls"));
@@ -72,8 +71,10 @@ public class Student {
 		} catch (BiffException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}catch(IndexOutOfBoundsException e){
+			
 		}
-		*/
+		
 	}
 
 	/**
@@ -89,7 +90,8 @@ public class Student {
 					course.getCorequisite(), course.getPrerequisites(),
 					course.getCourseDescription(), course.getTimeSlot(), course.getDataColCourse(), bidPoints));
 			numPoints-=bidPoints;
-			
+			System.out.println(bidPoints);
+			System.out.println(bidCourses);
 			return true;
 //			write to database
 			
@@ -160,7 +162,23 @@ public class Student {
 	public String getPassword() {
 		return password;
 	}
-
+	
+	/**
+	 * @author William Merritt
+	 * Attempts to update the students password
+	 * 
+	 * @param Current Password
+	 * @param New Password
+	 * @return success boolean
+	 */
+	public boolean setPassword(String currentPass,String setPass){
+		boolean passSet=false;
+		if(password.equals(currentPass)){
+			password=setPass;
+			passSet=true;
+		}
+		return passSet;
+	}
 	/**
 	 * @author Matthew Alpert
 	 * @return student's login username
@@ -220,11 +238,11 @@ public class Student {
 	
 	
 //	finish up later
-	private void writeDatabase(int col, String label){
+	public void writeDatabase(int col, String label){
 		writeCell = writeSheet.getWritableCell(dataRow, col);
 	}
 	
-	private void writeDatabase(int col, int num){
+	public void writeDatabase(int col, int num){
 		
 	}
 	
