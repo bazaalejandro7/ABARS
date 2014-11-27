@@ -57,6 +57,21 @@ public class Student {
 		this.currentSchedule = currentSchedule;
 		this.dataRow = dataRow;
 		
+<<<<<<< HEAD
+=======
+		//just to get it working for now
+		try {
+			workbook = Workbook.getWorkbook(new File("Student Database.xls"));
+			copy = Workbook.createWorkbook(new File("Student Database Copy.xls"));
+			writeSheet = copy.getSheet(0);
+		} catch (BiffException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch(IndexOutOfBoundsException e){
+			
+		}
+		
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 	}
 
 	/**
@@ -75,10 +90,15 @@ public class Student {
 					course.getCorequisite(), course.getPrerequisites(),
 					course.getCourseDescription(), course.getDataColCourse(), bidPoints));
 			numPoints-=bidPoints;
+<<<<<<< HEAD
 			
 			writeDatabase(course.getDataColCourse(), bidPoints);
 			writeDatabase(5, numPoints);
 			
+=======
+			System.out.println(bidPoints);
+			System.out.println(bidCourses);
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 			return true;
 			
 		}else{
@@ -156,7 +176,23 @@ public class Student {
 	public String getPassword() {
 		return password;
 	}
-
+	
+	/**
+	 * @author William Merritt
+	 * Attempts to update the students password
+	 * 
+	 * @param Current Password
+	 * @param New Password
+	 * @return success boolean
+	 */
+	public boolean setPassword(String currentPass,String setPass){
+		boolean passSet=false;
+		if(password.equals(currentPass)){
+			password=setPass;
+			passSet=true;
+		}
+		return passSet;
+	}
 	/**
 	 * @author Matthew Alpert
 	 * @return student's login username
@@ -219,6 +255,7 @@ public class Student {
 	
 	
 //	finish up later
+<<<<<<< HEAD
 	private void writeDatabase(int col, String newString) throws IOException{
 //		FileWriter writer = new FileWriter("StudentDb.txt");
 		Scanner scan = new Scanner("StudentDb.txt");
@@ -275,6 +312,13 @@ public class Student {
 			writer.write(scanTemp.nextLine());
 			writer.newLine();
 		}
+=======
+	public void writeDatabase(int col, String label){
+		writeCell = writeSheet.getWritableCell(dataRow, col);
+	}
+	
+	public void writeDatabase(int col, int num){
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 		
 		writer.close();
 	}

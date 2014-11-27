@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,8 +10,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JButton;
 
+<<<<<<< HEAD
 import sun.awt.RepaintArea;
+=======
+
+//import sun.awt.RepaintArea;
+import jxl.read.biff.BiffException;
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 
 /**
  * Course: SE 300- 01
@@ -41,45 +49,49 @@ public class RegisterGUI extends JPanel {
 		allCourses = cd.getCourseList();
 		gradedCourses = currStudent.getCoursesTaken();
 		i = gradedCourses.size();
-
+		
 		//add layout manager
-		this.setLayout(new GridLayout((30), 2));
-		//TODO figure out how to set the layout so that it works for all students
+		this.setLayout(new GridLayout(30, 3));
 
 		this.add(new JLabel("Course Name:"));
 		this.add(new JLabel("Credits:"));
-
+		this.add(new JLabel("Course Description"));
 		//continue from same spot for the rest of the courses without grades
 		for(;i<allCourses.size();i++){
 
 			Course currCourse = allCourses.get(i);
 			JRadioButton currLabel = new JRadioButton(currCourse.getCourseNum());
+			JButton currButton=new JButton("Description");
+			
 			currLabel.addActionListener(new Listener());
 			currLabel.setActionCommand(Integer.toString(i));
-
-
 
 			this.add(currLabel);
 
 			JLabel creditsLabel = new JLabel(Integer.toString(currCourse.getCredits()));
 			this.add(creditsLabel);
+			
+			currButton.addActionListener(new DescriptionListener(currCourse));
+			currButton.setMargin(new java.awt.Insets(1, 2, 1, 2));
+			currButton.setMaximumSize(new Dimension(10, 10));
+			currButton.setPreferredSize(new Dimension(10, 10));
+
+			//TODO get the buttons to add correctly
+			this.add(currButton);
 		}
 	}
 
-/**
- * 
- * @author courtneyfennell
- *
- */
+
 	class Listener implements ActionListener { // Inner class
 		public void actionPerformed(ActionEvent e) {
 
 			int action = Integer.parseInt(e.getActionCommand());
 			Course chosenCourse = allCourses.get(action);
-
+		
 			String text = String.format("You have %d points.\nEnter the number of points you want to bid:", currStudent.getNumPoints());
 			String input = JOptionPane.showInputDialog(text);
 
+<<<<<<< HEAD
 			if (input !=null) {
 				boolean success = false;
 				try {
@@ -103,8 +115,38 @@ public class RegisterGUI extends JPanel {
 				}
 
 			}
+=======
+					if (input !=null) {
+						boolean success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+						if(success){
+							ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
+							JOptionPane.showMessageDialog(null, 
+									"You have successfully added your class!", 
+									"Add Class Confimation", JOptionPane.PLAIN_MESSAGE , image);
+
+						}
+						else{
+							ImageIcon image = new ImageIcon(getClass().getResource("127.gif"));
+							JOptionPane.showMessageDialog(null, 
+									"I'm sorry, you cannot add that class", 
+									"Add Class Error", JOptionPane.PLAIN_MESSAGE , image);
+						}
+					
+					}
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 		}
 
 	}
+	class DescriptionListener implements ActionListener{
+		private Course course;
+		
+		public DescriptionListener(Course course){
+			this.course=course;
+		}
+		
+		public void actionPerformed(ActionEvent e){
+			JOptionPane.showMessageDialog(null, "<html><body><p style='width: 200px;'>"+String.format("%s: %s", course.getCourseNum(),course.getCourseDescription())+"</body></html>");
+		}
+		
+	}
 }
-
