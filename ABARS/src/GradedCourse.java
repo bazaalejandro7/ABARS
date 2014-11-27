@@ -18,9 +18,9 @@ public class GradedCourse extends Course {
 	 */
 	public GradedCourse(String courseNum, int credits, Course corequisite,
 			ArrayList<Course> prerequisites, String courseDescription,
-			int timeSlot, int dataColStudent, String grade) {
+			int dataColStudent, String grade) {
 		super(courseNum, credits, corequisite, prerequisites,
-				courseDescription, timeSlot, dataColStudent);
+				courseDescription, dataColStudent);
 		this.grade = grade;
 	}
 	

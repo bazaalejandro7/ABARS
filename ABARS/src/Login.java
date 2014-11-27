@@ -1,7 +1,5 @@
 import java.io.IOException;
 
-import jxl.read.biff.BiffException;
-
 /**
  * 
  * @author Matthew
@@ -34,7 +32,7 @@ public class Login {
 		StudentDatabase studentDB = null;
 		try {
 			studentDB = new StudentDatabase(); //creates temporary student database
-		} catch (BiffException | IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
@@ -53,7 +51,7 @@ public class Login {
 		StudentDatabase studentDB = null;
 		try {
 			studentDB = new StudentDatabase();
-		} catch (BiffException | IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		

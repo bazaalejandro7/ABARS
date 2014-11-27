@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import sun.awt.RepaintArea;
-import jxl.read.biff.BiffException;
 
 /**
  * Course: SE 300- 01
@@ -36,7 +35,7 @@ public class RegisterGUI extends JPanel {
 	 * @throws BiffException
 	 * @throws IOException
 	 */
-	public RegisterGUI(Student student) throws BiffException, IOException{
+	public RegisterGUI(Student student) throws IOException{
 		currStudent = student;
 		cd = new CourseDatabase();
 		allCourses = cd.getCourseList();
@@ -82,7 +81,13 @@ public class RegisterGUI extends JPanel {
 			String input = JOptionPane.showInputDialog(text);
 
 			if (input !=null) {
-				boolean success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+				boolean success = false;
+				try {
+					success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+				} catch (NumberFormatException	| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				if(success){
 					ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
 					JOptionPane.showMessageDialog(null, 

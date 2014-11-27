@@ -110,7 +110,11 @@ public class BidGUI extends JPanel {
 			int action = Integer.parseInt(e.getActionCommand());
 			BidCourse chosenCourse = bidCourses.get(action);
 
-			currStudent.dropCourse(chosenCourse);
+			try {
+				currStudent.dropCourse(chosenCourse);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			ImageIcon image = new ImageIcon(getClass().getResource("zoidbergescape.gif"));
 			JOptionPane.showMessageDialog(null, 
 					"You have successfully dropped your class!", 
