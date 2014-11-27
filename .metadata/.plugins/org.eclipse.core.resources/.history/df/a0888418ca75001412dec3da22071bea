@@ -1,0 +1,136 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import jxl.*;
+import jxl.read.biff.BiffException;
+
+
+
+/**
+ * @author Matthew Alpert
+ * @version 1.5
+ * @created 16-Oct-2014 3:32:00 AM
+ * 
+ * This class utilizes the open source API JExcel.
+ * Using JExcel, this class reads in and creates all
+ * the course objects in the database.
+ */
+public class CourseDatabase {
+
+	private ArrayList<Course> courseList;
+	
+	/**
+	 * @author Matthew Alpert
+	 * @throws BiffException
+	 * @throws IOException
+	 * Constructs the course database
+	 */
+	public CourseDatabase() throws BiffException, IOException{
+		
+		File file = new File("CourseDb.txt");
+		Scanner scan = new Scanner(file);
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		
+		String line;
+		String[] curRow = new String[6];
+		scan.nextLine();
+		
+		Workbook workbook = Workbook.getWorkbook(new File("Course Database.xls"));
+		Sheet sheet = workbook.getSheet(0);
+		
+		courseList = new ArrayList<Course>();
+		ArrayList<Course> prerequisiteCourse = new ArrayList<Course>();
+		Course newCourse, corequisiteCourse;
+		String prerequisite, corequisite, description;
+		int credits, dataColStudent;
+		Cell[] cur = sheet.getRow(1);
+		int countRow = 1;
+		
+//		adding in all the courses in the database
+		while(scan.hasNext()){
+			corequisite = prerequisite = null;
+			corequisiteCourse = null;
+			prerequisiteCourse.clear();
+			
+			line = scan.nextLine();
+			
+			curRow = line.split("	");
+			System.out.println(curRow);
+			
+			credits = Integer.parseInt(cur[3].getContents());
+			description = cur[1].getContents();
+			dataColStudent = countRow + 5;
+			
+//			checking for corequisite
+			if(cur[4].getType() != CellType.EMPTY){
+				corequisite = cur[4].getContents();
+				corequisiteCourse = searchFor(corequisite);
+			}
+//			checking for prerequisites, max of 3 prerequisites
+			if(cur[6].getType() != CellType.EMPTY){
+				for(int i = 5; i <= 6; i++){
+					prerequisite = cur[i].getContents();
+					prerequisiteCourse.add(searchFor(prerequisite));
+				}
+//			}else if(cur[5].getType() != CellType.EMPTY){
+//				for(int i = 5; i <= 6; i++){
+//					prerequisite = cur[i].getContents();
+//					prerequisiteCourse.add(searchFor(prerequisite));
+//				}
+			}else if(cur[5].getType() != CellType.EMPTY){
+					prerequisite = cur[5].getContents();
+					prerequisiteCourse.add(searchFor(prerequisite));
+			}
+			
+//			add course to the database 
+			newCourse = new Course(cur[0].getContents(), credits, corequisiteCourse, prerequisiteCourse, description, dataColStudent);
+			courseList.add(newCourse);
+			countRow++;
+			cur = sheet.getRow(countRow);
+		}
+	}
+
+	/**
+	 * @author Matthew Alpert
+	 * @param someCourse - a given course name (example: SE 300)
+	 * @return the course object with the same given name, otherwise return null.
+	 * This method searches for the course object inside the database.
+	 */
+	private Course searchFor(String someCourse){
+
+		int i = 0;
+
+		while(!(courseList.get(i).getCourseNum().equals(someCourse)) && i<courseList.size()){
+			i++;
+		}
+
+		if(i == courseList.size()){
+			return null;
+		}else{
+			return courseList.get(i);
+		}
+	}
+
+	/**
+	 * @author Matthew Alpert
+	 * @param courseName - a given course name (example: SE 300)
+	 * @return course object or null. 
+	 */
+	public Course getCourse(String courseName){
+		return searchFor(courseName);
+	}
+
+	/**
+	 * @author Matthew Alpert
+	 * @return all the courses listed in the course database
+	 */
+	public ArrayList<Course> getCourseList() {
+		return courseList;
+	}
+	
+	
+}//end CourseDatabase
