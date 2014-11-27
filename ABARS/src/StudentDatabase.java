@@ -165,6 +165,7 @@ public class StudentDatabase {
 	 */
 
 	public void ScheduleList() {
+		ArrayList<String> schedulelist = new ArrayList<String>();
 	}
 }
 

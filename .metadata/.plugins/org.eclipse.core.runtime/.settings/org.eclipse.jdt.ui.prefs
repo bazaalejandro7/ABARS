@@ -1,10 +1,6 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
-<<<<<<< HEAD
->>>>>>>=987293be5a1bb125ae73f5b31f36eff858219673
-=======
->>>>>>>=0953f1c7eb25fa73f1f6c70a000f692d1761103a
->>>>>>> 3165588e8d7e0806d51f07b7ef88417400cfa752
+>>>>>>>=3165588e8d7e0806d51f07b7ef88417400cfa752
 command=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/bin/javadoc
 content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.recommenders.calls.rcp.proposalCategory.templates\u0000org.eclipse.mylyn.java.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.recommenders.chain.rcp.proposalCategory.chain\u0000
 content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"/>
@@ -20,7 +16,7 @@ org.eclipse.jdt.ui.text.code_templates_migrated=true
 org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.templates_migrated=true
-org.eclipse.jface.textfont=1|Consolas|10.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Consolas;
+org.eclipse.jface.textfont=1|Monaco|11.0|0|COCOA|1|;
 proposalOrderMigrated=true
 spelling_locale_initialized=true
 tabWidthPropagated=true

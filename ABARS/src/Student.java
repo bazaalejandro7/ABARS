@@ -44,34 +44,31 @@ public class Student {
 	 * @param address - student's personal address
 	 * @param dataRow - for database use, indicates the row the student is located in
 	 */
-	public Student(ArrayList<GradedCourse> coursesTaken, ArrayList<BidCourse> bidCourses, ArrayList<Course> currentSchedule,int numID, int numPoints,
+	public Student(ArrayList<GradedCourse> takenCourses, ArrayList<BidCourse> coursesBid, ArrayList<Course> scheduleCurrent,int numID, int numPoints,
 			String password, String username, String name, String address, int dataRow) {
-		this.coursesTaken = coursesTaken;
+		
 		this.numID = numID;
 		this.numPoints = numPoints;
 		this.password = password;
 		this.username = username;
 		this.name = name;
 		this.address = address;
-		this.bidCourses = bidCourses;
-		this.currentSchedule = currentSchedule;
+		
+		
+		bidCourses = new ArrayList<BidCourse>();
+		for(int i = 0; i < coursesBid.size(); i++){
+			bidCourses.add(coursesBid.get(i));
+		}
+		coursesTaken = new ArrayList<GradedCourse>();
+		for(int i = 0; i < takenCourses.size(); i++){
+			coursesTaken.add(takenCourses.get(i));
+		}
+		currentSchedule = new ArrayList<Course>();
+		for(int i = 0; i < scheduleCurrent.size(); i++){
+			currentSchedule.add(scheduleCurrent.get(i));
+		}
 		this.dataRow = dataRow;
 		
-<<<<<<< HEAD
-=======
-		//just to get it working for now
-		try {
-			workbook = Workbook.getWorkbook(new File("Student Database.xls"));
-			copy = Workbook.createWorkbook(new File("Student Database Copy.xls"));
-			writeSheet = copy.getSheet(0);
-		} catch (BiffException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}catch(IndexOutOfBoundsException e){
-			
-		}
-		
->>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 	}
 
 	/**
@@ -90,15 +87,10 @@ public class Student {
 					course.getCorequisite(), course.getPrerequisites(),
 					course.getCourseDescription(), course.getDataColCourse(), bidPoints));
 			numPoints-=bidPoints;
-<<<<<<< HEAD
 			
 			writeDatabase(course.getDataColCourse(), bidPoints);
 			writeDatabase(5, numPoints);
 			
-=======
-			System.out.println(bidPoints);
-			System.out.println(bidCourses);
->>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 			return true;
 			
 		}else{
@@ -176,23 +168,7 @@ public class Student {
 	public String getPassword() {
 		return password;
 	}
-	
-	/**
-	 * @author William Merritt
-	 * Attempts to update the students password
-	 * 
-	 * @param Current Password
-	 * @param New Password
-	 * @return success boolean
-	 */
-	public boolean setPassword(String currentPass,String setPass){
-		boolean passSet=false;
-		if(password.equals(currentPass)){
-			password=setPass;
-			passSet=true;
-		}
-		return passSet;
-	}
+
 	/**
 	 * @author Matthew Alpert
 	 * @return student's login username
@@ -252,35 +228,52 @@ public class Student {
 		return bidCourses;
 	}
 	
-	
-	
-//	finish up later
-<<<<<<< HEAD
+	/**
+	 * @author Matthew Alpert
+	 * @param col - column to be written over
+	 * @param newString - new string to be written (either a grade or I for in progress)
+	 * @throws IOException
+	 * 
+	 */
 	private void writeDatabase(int col, String newString) throws IOException{
-//		FileWriter writer = new FileWriter("StudentDb.txt");
-		Scanner scan = new Scanner("StudentDb.txt");
-		Scanner scan1 = new Scanner("StudentDb.txt");
 		
-		for(int i = 0; i < dataRow; i++){
-			scan.nextLine();
-		}
 		String[] curRow = new String[46];
-		curRow = scan.nextLine().split("	");
+		Scanner scan = new Scanner(new File("StudentDb.txt"));
+		String temp = scan.nextLine() + "\n";
 		
+		for(int i = 1; i < dataRow; i++){
+			temp += scan.nextLine() + "\n";
+		}
+		
+		curRow = scan.nextLine().split("	");
 		curRow[col] = newString;
-		scan.reset();
-		System.out.println("blah");
-		System.out.println(scan.next());
-		System.out.println(scan1.nextLine());
+		temp += curRow[0];
+		
+		for(int i = 1; i < 46; i++){
+			temp += "	" + curRow[i];
+		}
+		
+		while(scan.hasNextLine()){
+			temp += "\n" + scan.nextLine();
+		}
+		scan.close();
+		
+		Scanner scanTemp = new Scanner(temp);
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(new File("StudentDb.txt")));
+		while(scanTemp.hasNextLine()){
+			writer.write(scanTemp.nextLine());
+			writer.newLine();
+		}
+		
+		writer.close();
 	}
 	
 	/**
-	 * 
-	 * @param col
-	 * @param numBid
+	 * @author Matthew Alpert
+	 * @param col - column to be written over
+	 * @param numBid - number of bid points
 	 * @throws IOException
-	 * @throws BiffException
-	 * @throws WriteException
 	 */
 	private void writeDatabase(int col, int numBid) throws IOException{
 
@@ -312,13 +305,6 @@ public class Student {
 			writer.write(scanTemp.nextLine());
 			writer.newLine();
 		}
-=======
-	public void writeDatabase(int col, String label){
-		writeCell = writeSheet.getWritableCell(dataRow, col);
-	}
-	
-	public void writeDatabase(int col, int num){
->>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 		
 		writer.close();
 	}

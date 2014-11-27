@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
-<<<<<<< HEAD
-<entry loc="C:\Program Files\Java\jre1.8.0_20" stamp="1409675966892"/>
-=======
 <entry loc="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home" stamp="1414198788000"/>
-<entry loc="/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home" stamp="1395111241000"/>
->>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 </dirs>

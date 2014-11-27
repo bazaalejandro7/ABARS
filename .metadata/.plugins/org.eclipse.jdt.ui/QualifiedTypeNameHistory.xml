@@ -1,18 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-</qualifiedTypeNameHistroy>
-=======
-<<<<<<< HEAD
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.io.BufferedReader"/>
-<fullyQualifiedTypeName name="java.io.FileReader"/>
-<fullyQualifiedTypeName name="java.io.FileWriter"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="java.io.BufferedWriter"/>
-</qualifiedTypeNameHistroy>
-=======
 <qualifiedTypeNameHistroy/>
->>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
->>>>>>> 3165588e8d7e0806d51f07b7ef88417400cfa752

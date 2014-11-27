@@ -1,4 +1,3 @@
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,14 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
-
-<<<<<<< HEAD
-import sun.awt.RepaintArea;
-=======
+import javax.swing.JOptionPane;
 
 //import sun.awt.RepaintArea;
 import jxl.read.biff.BiffException;
->>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 
 /**
  * Course: SE 300- 01
@@ -43,7 +38,9 @@ public class RegisterGUI extends JPanel {
 	 * @throws BiffException
 	 * @throws IOException
 	 */
-	public RegisterGUI(Student student) throws IOException{
+	public RegisterGUI(Student student) throws BiffException, IOException{
+		JPanel labelPanel=new JPanel();
+		
 		currStudent = student;
 		cd = new CourseDatabase();
 		allCourses = cd.getCourseList();
@@ -51,33 +48,37 @@ public class RegisterGUI extends JPanel {
 		i = gradedCourses.size();
 		
 		//add layout manager
-		this.setLayout(new GridLayout(30, 3));
+		this.setLayout(new GridLayout(30, 1));
+		labelPanel.setLayout(new GridLayout(1,3));
+		//TODO figure out how to set the layout so that it works for all students
 
-		this.add(new JLabel("Course Name:"));
-		this.add(new JLabel("Credits:"));
-		this.add(new JLabel("Course Description"));
+		labelPanel.add(new JLabel("Course Name:"));
+		labelPanel.add(new JLabel("Credits:"));
+		labelPanel.add(new JLabel("Course Description"));
+		this.add(labelPanel);
 		//continue from same spot for the rest of the courses without grades
 		for(;i<allCourses.size();i++){
-
+			JPanel tempPanel=new JPanel();
+			
 			Course currCourse = allCourses.get(i);
 			JRadioButton currLabel = new JRadioButton(currCourse.getCourseNum());
 			JButton currButton=new JButton("Description");
 			
+			tempPanel.setLayout(new GridLayout(1,3));
+			
 			currLabel.addActionListener(new Listener());
 			currLabel.setActionCommand(Integer.toString(i));
 
-			this.add(currLabel);
+			currButton.addActionListener(new DescriptionListener(currCourse));
+
+			tempPanel.add(currLabel);
 
 			JLabel creditsLabel = new JLabel(Integer.toString(currCourse.getCredits()));
-			this.add(creditsLabel);
+			tempPanel.add(creditsLabel);
 			
-			currButton.addActionListener(new DescriptionListener(currCourse));
-			currButton.setMargin(new java.awt.Insets(1, 2, 1, 2));
-			currButton.setMaximumSize(new Dimension(10, 10));
-			currButton.setPreferredSize(new Dimension(10, 10));
-
 			//TODO get the buttons to add correctly
-			this.add(currButton);
+			tempPanel.add(currButton);
+			this.add(tempPanel);
 		}
 	}
 
@@ -91,31 +92,6 @@ public class RegisterGUI extends JPanel {
 			String text = String.format("You have %d points.\nEnter the number of points you want to bid:", currStudent.getNumPoints());
 			String input = JOptionPane.showInputDialog(text);
 
-<<<<<<< HEAD
-			if (input !=null) {
-				boolean success = false;
-				try {
-					success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
-				} catch (NumberFormatException	| IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				if(success){
-					ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
-					JOptionPane.showMessageDialog(null, 
-							"You have successfully added your class!", 
-							"Add Class Confimation", JOptionPane.PLAIN_MESSAGE , image);
-
-				}
-				else{
-					ImageIcon image = new ImageIcon(getClass().getResource("127.gif"));
-					JOptionPane.showMessageDialog(null, 
-							"I'm sorry, you cannot add that class", 
-							"Add Class Error", JOptionPane.PLAIN_MESSAGE , image);
-				}
-
-			}
-=======
 					if (input !=null) {
 						boolean success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
 						if(success){
@@ -133,7 +109,6 @@ public class RegisterGUI extends JPanel {
 						}
 					
 					}
->>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 		}
 
 	}
@@ -150,3 +125,4 @@ public class RegisterGUI extends JPanel {
 		
 	}
 }
+
