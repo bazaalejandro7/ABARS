@@ -12,9 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 
+<<<<<<< HEAD
+import sun.awt.RepaintArea;
+=======
 
 //import sun.awt.RepaintArea;
 import jxl.read.biff.BiffException;
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 
 /**
  * Course: SE 300- 01
@@ -39,7 +43,7 @@ public class RegisterGUI extends JPanel {
 	 * @throws BiffException
 	 * @throws IOException
 	 */
-	public RegisterGUI(Student student) throws BiffException, IOException{
+	public RegisterGUI(Student student) throws IOException{
 		currStudent = student;
 		cd = new CourseDatabase();
 		allCourses = cd.getCourseList();
@@ -87,6 +91,31 @@ public class RegisterGUI extends JPanel {
 			String text = String.format("You have %d points.\nEnter the number of points you want to bid:", currStudent.getNumPoints());
 			String input = JOptionPane.showInputDialog(text);
 
+<<<<<<< HEAD
+			if (input !=null) {
+				boolean success = false;
+				try {
+					success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+				} catch (NumberFormatException	| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if(success){
+					ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
+					JOptionPane.showMessageDialog(null, 
+							"You have successfully added your class!", 
+							"Add Class Confimation", JOptionPane.PLAIN_MESSAGE , image);
+
+				}
+				else{
+					ImageIcon image = new ImageIcon(getClass().getResource("127.gif"));
+					JOptionPane.showMessageDialog(null, 
+							"I'm sorry, you cannot add that class", 
+							"Add Class Error", JOptionPane.PLAIN_MESSAGE , image);
+				}
+
+			}
+=======
 					if (input !=null) {
 						boolean success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
 						if(success){
@@ -104,6 +133,7 @@ public class RegisterGUI extends JPanel {
 						}
 					
 					}
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 		}
 
 	}

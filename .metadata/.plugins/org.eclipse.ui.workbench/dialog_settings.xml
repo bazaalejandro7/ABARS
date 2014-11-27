@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.internal.QuickAccess">
+<<<<<<< HEAD
 		<item value="675" key="dialogHeight"/>
 		<item value="1200" key="dialogWidth"/>
+=======
+<<<<<<< HEAD
+		<item value="789" key="dialogHeight"/>
+		<item value="1440" key="dialogWidth"/>
+=======
+		<item value="563" key="dialogHeight"/>
+		<item value="900" key="dialogWidth"/>
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
+>>>>>>> 3165588e8d7e0806d51f07b7ef88417400cfa752
 		<list key="textEntries">
 		</list>
 		<list key="orderedElements">
@@ -12,6 +22,7 @@
 		<list key="textArray">
 		</list>
 	</section>
+<<<<<<< HEAD
 	<section name="ImportExportAction">
 		<item value="org.eclipse.ui.wizards.import.FileSystem" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
@@ -28,4 +39,6 @@
 			<item value="/Users/courtneyfennell/Desktop/pics"/>
 		</list>
 	</section>
+=======
+>>>>>>> 3165588e8d7e0806d51f07b7ef88417400cfa752
 </section>

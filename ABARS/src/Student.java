@@ -1,11 +1,9 @@
-
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-
-import jxl.*;
-import jxl.read.biff.BiffException;
-import jxl.write.*;
 
 
 
@@ -34,10 +32,6 @@ public class Student {
 	private String username;
 	private String name, address;
 	private int dataRow;
-	Workbook workbook;
-	WritableWorkbook copy;
-	WritableSheet writeSheet;
-	WritableCell writeCell;
 	
 	/**
 	 * @author Matthew Alpert
@@ -63,6 +57,8 @@ public class Student {
 		this.currentSchedule = currentSchedule;
 		this.dataRow = dataRow;
 		
+<<<<<<< HEAD
+=======
 		//just to get it working for now
 		try {
 			workbook = Workbook.getWorkbook(new File("Student Database.xls"));
@@ -75,6 +71,7 @@ public class Student {
 			
 		}
 		
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 	}
 
 	/**
@@ -83,17 +80,26 @@ public class Student {
 	 * @param bidPoints - number of points the student is using for the bid on the course, will add to the database
 	 * @return boolean - whether or not the student has successfully added the class
 	 * Edit 11/15/14 by Courtney Fennell - Change return value from void to boolean and fix a logical error.
+	 * @throws IOException 
+	 * @throws WriteException 
+	 * @throws BiffException 
 	 */
-	public boolean addCourse(Course course, int bidPoints){
+	public boolean addCourse(Course course, int bidPoints) throws IOException{
 		if(!coursesTaken.contains(course) && bidPoints <= numPoints){
 			bidCourses.add(new BidCourse(course.getCourseNum(), course.getCredits(),
 					course.getCorequisite(), course.getPrerequisites(),
-					course.getCourseDescription(), course.getTimeSlot(), course.getDataColCourse(), bidPoints));
+					course.getCourseDescription(), course.getDataColCourse(), bidPoints));
 			numPoints-=bidPoints;
+<<<<<<< HEAD
+			
+			writeDatabase(course.getDataColCourse(), bidPoints);
+			writeDatabase(5, numPoints);
+			
+=======
 			System.out.println(bidPoints);
 			System.out.println(bidCourses);
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 			return true;
-//			write to database
 			
 		}else{
 			return false;
@@ -104,11 +110,14 @@ public class Student {
 	/**
 	 * @author Matthew Alpert
 	 * @param dropCourse - BidCourse object that the student wishes to drop their bid for
+	 * @throws IOException 
 	 */
-	public void dropCourse(BidCourse dropCourse){
+	public void dropCourse(BidCourse dropCourse) throws IOException{
 		numPoints += dropCourse.getBid();
 		bidCourses.remove(dropCourse);
-//		write to database
+
+		writeDatabase(dropCourse.getDataColCourse(), dropCourse.getBid());
+		writeDatabase(5, numPoints);
 		
 	}
 
@@ -124,10 +133,13 @@ public class Student {
 	/**
 	 * @author Matthew Alpert
 	 * @param currentSchedule - sets the schedule that the student has been placed into to
+	 * @throws IOException 
 	 */
-	public void setCurrentSchedule(ArrayList<Course> currentSchedule) {
+	public void setCurrentSchedule(ArrayList<Course> currentSchedule) throws IOException {
 		this.currentSchedule = currentSchedule;
-//		write to database
+		for(int i  = 0; i < currentSchedule.size(); i++){
+			writeDatabase(currentSchedule.get(i).getDataColCourse(), "I");
+		}
 	}
 
 	/**
@@ -141,10 +153,12 @@ public class Student {
 	/**
 	 * @author Matthew Alpert
 	 * @param numPoints - current total number of points the student can use to bid on classes
+	 * @throws IOException 
 	 */
-	public void setNumPoints(int numPoints) {
+	public void setNumPoints(int numPoints) throws IOException {
 		this.numPoints = numPoints;
-//		write to database
+
+		writeDatabase(5, numPoints);
 	}
 
 	/**
@@ -198,10 +212,11 @@ public class Student {
 	/**
 	 * @author Matthew Alpert
 	 * @param text - student's personal name
+	 * @throws IOException 
 	 */
-	public void setName(String text) {
+	public void setName(String text) throws IOException {
 		name = text;
-//		write to database
+		writeDatabase(3, text);
 	}
 
 	/**
@@ -215,10 +230,11 @@ public class Student {
 	/**
 	 * @author Matthew Alpert
 	 * @param text - student's personal address
+	 * @throws IOException 
 	 */
-	public void setAddress(String text) {
+	public void setAddress(String text) throws IOException {
 		address = text;
-//		write to database
+		writeDatabase(4, text);
 	}
 	
 	/**
@@ -237,13 +253,74 @@ public class Student {
 	}
 	
 	
+	
 //	finish up later
+<<<<<<< HEAD
+	private void writeDatabase(int col, String newString) throws IOException{
+//		FileWriter writer = new FileWriter("StudentDb.txt");
+		Scanner scan = new Scanner("StudentDb.txt");
+		Scanner scan1 = new Scanner("StudentDb.txt");
+		
+		for(int i = 0; i < dataRow; i++){
+			scan.nextLine();
+		}
+		String[] curRow = new String[46];
+		curRow = scan.nextLine().split("	");
+		
+		curRow[col] = newString;
+		scan.reset();
+		System.out.println("blah");
+		System.out.println(scan.next());
+		System.out.println(scan1.nextLine());
+	}
+	
+	/**
+	 * 
+	 * @param col
+	 * @param numBid
+	 * @throws IOException
+	 * @throws BiffException
+	 * @throws WriteException
+	 */
+	private void writeDatabase(int col, int numBid) throws IOException{
+
+		String[] curRow = new String[46];
+		Scanner scan = new Scanner(new File("StudentDb.txt"));
+		String temp = scan.nextLine() + "\n";
+		
+		for(int i = 1; i < dataRow; i++){
+			temp += scan.nextLine() + "\n";
+		}
+		
+		curRow = scan.nextLine().split("	");
+		curRow[col] = Integer.toString(numBid);
+		temp += curRow[0];
+		
+		for(int i = 1; i < 46; i++){
+			temp += "	" + curRow[i];
+		}
+		
+		while(scan.hasNextLine()){
+			temp += "\n" + scan.nextLine();
+		}
+		scan.close();
+		
+		Scanner scanTemp = new Scanner(temp);
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(new File("StudentDb.txt")));
+		while(scanTemp.hasNextLine()){
+			writer.write(scanTemp.nextLine());
+			writer.newLine();
+		}
+=======
 	public void writeDatabase(int col, String label){
 		writeCell = writeSheet.getWritableCell(dataRow, col);
 	}
 	
 	public void writeDatabase(int col, int num){
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 		
+		writer.close();
 	}
 	
 }//end Student
