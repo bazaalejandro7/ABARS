@@ -1,0 +1,21 @@
+/**
+ * 
+ * Author: Alejandro Baza
+ * @date 2014-25-11
+ * Description: This file contains the methods that provide an Administrator with privileges
+ * 
+ */
+
+/**
+ * 
+ * @author Alejandro Baza
+ * This method adds an administrator subclass of login that will be used when the login accepts the user as an administrator
+ * @return Set on false, True if the user is an administrator
+ */
+public class boolean Administrator extends Login {
+	
+	//Set administrator to false
+ administratorDB = false;
+ if (administratorDB == true)
+	 ////////Administrator Privileges ON///////////
+}
