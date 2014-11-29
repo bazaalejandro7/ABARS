@@ -1,4 +1,3 @@
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
-
+import javax.swing.JOptionPane;
 
 //import sun.awt.RepaintArea;
 import jxl.read.biff.BiffException;
@@ -40,6 +39,8 @@ public class RegisterGUI extends JPanel {
 	 * @throws IOException
 	 */
 	public RegisterGUI(Student student) throws BiffException, IOException{
+		JPanel labelPanel=new JPanel();
+		
 		currStudent = student;
 		cd = new CourseDatabase();
 		allCourses = cd.getCourseList();
@@ -47,33 +48,37 @@ public class RegisterGUI extends JPanel {
 		i = gradedCourses.size();
 		
 		//add layout manager
-		this.setLayout(new GridLayout(30, 3));
+		this.setLayout(new GridLayout(30, 1));
+		labelPanel.setLayout(new GridLayout(1,3));
+		//TODO figure out how to set the layout so that it works for all students
 
-		this.add(new JLabel("Course Name:"));
-		this.add(new JLabel("Credits:"));
-		this.add(new JLabel("Course Description"));
+		labelPanel.add(new JLabel("Course Name:"));
+		labelPanel.add(new JLabel("Credits:"));
+		labelPanel.add(new JLabel("Course Description"));
+		this.add(labelPanel);
 		//continue from same spot for the rest of the courses without grades
 		for(;i<allCourses.size();i++){
-
+			JPanel tempPanel=new JPanel();
+			
 			Course currCourse = allCourses.get(i);
 			JRadioButton currLabel = new JRadioButton(currCourse.getCourseNum());
 			JButton currButton=new JButton("Description");
 			
+			tempPanel.setLayout(new GridLayout(1,3));
+			
 			currLabel.addActionListener(new Listener());
 			currLabel.setActionCommand(Integer.toString(i));
 
-			this.add(currLabel);
+			currButton.addActionListener(new DescriptionListener(currCourse));
+
+			tempPanel.add(currLabel);
 
 			JLabel creditsLabel = new JLabel(Integer.toString(currCourse.getCredits()));
-			this.add(creditsLabel);
+			tempPanel.add(creditsLabel);
 			
-			currButton.addActionListener(new DescriptionListener(currCourse));
-			currButton.setMargin(new java.awt.Insets(1, 2, 1, 2));
-			currButton.setMaximumSize(new Dimension(10, 10));
-			currButton.setPreferredSize(new Dimension(10, 10));
-
 			//TODO get the buttons to add correctly
-			this.add(currButton);
+			tempPanel.add(currButton);
+			this.add(tempPanel);
 		}
 	}
 
@@ -120,3 +125,4 @@ public class RegisterGUI extends JPanel {
 		
 	}
 }
+

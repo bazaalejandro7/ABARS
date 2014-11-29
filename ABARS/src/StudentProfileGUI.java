@@ -1,10 +1,15 @@
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JFrame;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import jxl.read.biff.BiffException;
+
 
 
 //Class StudentProfileGui
@@ -20,7 +25,7 @@ public class StudentProfileGUI extends JPanel {
 	private Student student;
 	private final String[] labelPrefixes={"Username: ","Name: ","ID: "};
 	private JLabel[] dataLabels=new JLabel[3];
-
+	private MainFrameGUI mainFrame;
 
 	//Panel No argument constructor
 	public StudentProfileGUI(){
@@ -33,12 +38,13 @@ public class StudentProfileGUI extends JPanel {
 	 * 
 	 * @param Student student
 	 */
-	public StudentProfileGUI(Student student){
+	public StudentProfileGUI(Student student,MainFrameGUI mainFrame){
 		JButton logoutButton,changePassButton;
 		JPanel tempPanel=new JPanel();
 
+		this.mainFrame=mainFrame;
 		this.student=student;
-		
+
 		this.setLayout(new GridLayout(2,1));
 		tempPanel.setLayout(new GridLayout(6,1));
 
@@ -51,13 +57,13 @@ public class StudentProfileGUI extends JPanel {
 
 		changePassButton=new JButton("Change Password");
 		logoutButton=new JButton("Logout");
-		
+
 		changePassButton.addActionListener(new ChangePasswordListener());
-		
+
 		tempPanel.add(changePassButton);
 		tempPanel.add(logoutButton);
 		logoutButton.addActionListener(new LogoutListener());
-		
+
 		this.add(tempPanel);
 		this.add(new JLabel());
 		updateData();
@@ -78,19 +84,23 @@ public class StudentProfileGUI extends JPanel {
 		dataLabels[1].setText(labelPrefixes[1]+student.getName());
 		dataLabels[2].setText(labelPrefixes[2]+student.getNumID());
 	}
-	
+
 	/***Logout listener Class
 	 * <p>Shuts Down Program (Later Versions will Return to Login)</p>
-	 * @author WIlliam Merritt
+	 * @author William Merritt
 	 *
 	 */
-	
+
 	class LogoutListener implements ActionListener { 
 		public void actionPerformed(ActionEvent e) {
-			System.exit(0);
+			//mainFrame.setVisible(false);
+			mainFrame.logout();
+
+
 
 		}
 	}
+
 	class ChangePasswordListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			ChangePasswordPanel.changePasswordGui(student);

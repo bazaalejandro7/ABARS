@@ -17,7 +17,6 @@ public class Course {
 	private int credits;
 	private ArrayList<Course> prerequisites;
 	private Course corequisite;
-	private int timeSlot;
 	private int dataColCourse;
 
 	/**
@@ -30,13 +29,12 @@ public class Course {
 	 * @param timeSlot - which time slot the
 	 * @param dataColCourse - column in database that the course is held (for use of writing to the database)
 	 */
-	public Course(String courseNum, int credits, Course corequisite, ArrayList<Course> prerequisites, String courseDescription, int timeSlot, int dataColCourse){
+	public Course(String courseNum, int credits, Course corequisite, ArrayList<Course> prerequisites, String courseDescription, int dataColCourse){
 		this.courseNum = courseNum;
 		this.credits = credits;
 		this.corequisite = corequisite;
 		this.prerequisites = prerequisites;
 		this.courseDescription = courseDescription;
-		this.timeSlot = timeSlot;
 		this.dataColCourse = dataColCourse;
 	}
 
@@ -118,14 +116,6 @@ public class Course {
 	 */
 	public void setCorequisite(Course corequisite) {
 		this.corequisite = corequisite;
-	}
-
-	/**
-	 * @author Matthew Alpert
-	 * @return the time slot that this course takes
-	 */
-	public int getTimeSlot() {
-		return timeSlot;
 	}
 
 	/**

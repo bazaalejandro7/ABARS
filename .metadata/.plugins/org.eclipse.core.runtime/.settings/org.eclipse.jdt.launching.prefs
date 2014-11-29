@@ -1,5 +1,17 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
+<<<<<<< HEAD
 >>>>>>>=987293be5a1bb125ae73f5b31f36eff858219673
 eclipse.preferences.version=1
 org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<vmSettings defaultVM\="52,org.eclipse.jdt.internal.launching.macosx.MacOSXType24,com.oracle.java.8u25.jdk" defaultVMConnector\="">\n<vmType id\="org.eclipse.jdt.internal.launching.macosx.MacOSXType">\n<vm id\="com.oracle.java.8u25.jdk" name\="Java SE 8 [1.8.0_25]" path\="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home"/>\n</vmType>\n</vmSettings>\n
+=======
+<<<<<<< HEAD
+>>>>>>>=0953f1c7eb25fa73f1f6c70a000f692d1761103a
+eclipse.preferences.version=1
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1416977061237" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1416977061237" name\="jre1.8.0_20" path\="C\:\\Program Files\\Java\\jre1.8.0_20"/>\r\n</vmType>\r\n</vmSettings>\r\n
+=======
+>>>>>>>=987293be5a1bb125ae73f5b31f36eff858219673
+eclipse.preferences.version=1
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<vmSettings defaultVM\="52,org.eclipse.jdt.internal.launching.macosx.MacOSXType24,com.oracle.java.8u25.jdk" defaultVMConnector\="">\n<vmType id\="org.eclipse.jdt.internal.launching.macosx.MacOSXType">\n<vm id\="com.oracle.java.8u25.jdk" name\="Java SE 8 [1.8.0_25]" path\="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home"/>\n<vm id\="com.oracle.java.7u51.jdk" name\="Java SE 7 [1.7.0_51]" path\="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"/>\n<vm id\="com.oracle.java.7u45.jdk" name\="Java SE 7 [1.7.0_45]" path\="/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home"/>\n</vmType>\n</vmSettings>\n
+>>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
+>>>>>>> 5a69a698c91deada0931069402a60d462a4b3fc4

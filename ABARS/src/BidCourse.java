@@ -19,9 +19,8 @@ public class BidCourse extends Course {
 	  */
 	public BidCourse(String courseNum, int credits, Course corequisite,
 			ArrayList<Course> prerequisites, String courseDescription,
-			int timeSlot, int dataColStudent, int bid) {
-		super(courseNum, credits, corequisite, prerequisites, courseDescription,
-				timeSlot, dataColStudent);
+			int dataColStudent, int bid) {
+		super(courseNum, credits, corequisite, prerequisites, courseDescription, dataColStudent);
 		this.bid = bid;
 	}
 

@@ -1,9 +1,10 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-import jxl.*;
-import jxl.read.biff.BiffException;
 
 
 /**
@@ -17,16 +18,25 @@ import jxl.read.biff.BiffException;
 public class StudentDatabase {
 
 	private ArrayList<Student> studentList;
-
+	public File file;
+	BufferedWriter writer = null;
+	BufferedReader reader = null;
+	
 	/**
 	 * @author Matthew Alpert
 	 * @throws BiffException
 	 * @throws IOException
 	 * Constructs the student database
 	 */
-	public StudentDatabase() throws BiffException, IOException{
-		Workbook workbook = Workbook.getWorkbook(new File("Student Database.xls"));
-		Sheet sheet = workbook.getSheet(0);
+	public StudentDatabase() throws IOException{
+		
+		file = new File("StudentDb.txt");
+		Scanner scan = new Scanner(file);
+		
+		String[] curRow = new String[46];
+		String[] topRow = new String[46]; //reference points
+		topRow = scan.nextLine().split("	"); //sets the scanner at the correct position in the database and creates topRow reference points
+		
 		CourseDatabase courseList = new CourseDatabase();
 		Student newStudent; //student object holder
 		
@@ -35,23 +45,23 @@ public class StudentDatabase {
 		ArrayList<BidCourse> bidCourse = new ArrayList<BidCourse>();
 		ArrayList<Course> currentSchedule = new ArrayList<Course>();
 		
+		//information related to the individual student
 		int numID, numPoints;
 		String password, username, name, address;
 		studentList = new ArrayList<Student>();
-		Cell[] topRow =  sheet.getRow(0);
-		Cell[] cur = sheet.getRow(1);
+		
 		int countRow = 1;
 		int i;
 
 		//		adding in all the students in the database
-		while(!(cur[0].getContents().equals("end"))){
-			
-			username = cur[0].getContents(); //username
-			password = cur[1].getContents(); //password
-			numID = Integer.parseInt(cur[2].getContents()); //ID number
-			name = cur[3].getContents(); //student name
-			address = cur[4].getContents(); // personal address
-			numPoints = Integer.parseInt(cur[5].getContents()); //number of points available to bid
+		while(scan.hasNextLine()){
+			curRow = scan.nextLine().split("	");
+			username = curRow[0]; //username
+			password = curRow[1]; //password
+			numID = Integer.parseInt(curRow[2]); //ID number
+			name = curRow[3]; //student name
+			address = curRow[4]; // personal address
+			numPoints = Integer.parseInt(curRow[5]); //number of points available to bid
 			i = 6;
 			//clear arrays of course types
 			coursesTaken.clear();
@@ -59,29 +69,31 @@ public class StudentDatabase {
 			currentSchedule.clear();
 
 			//creates the list of all courses types a student has taken, taking, or bid for
-			while(i < topRow.length && topRow[i].getType() != CellType.EMPTY){
+			while(i < topRow.length){
 
-				//the contents will be a letter if the course is current or already taken
-				if(cur[i].getType() == CellType.LABEL){
-					if(cur[i].getContents().equals("I")){ //if the course has an I, it means it is a current course
-						currentSchedule.add(courseList.getCourse(topRow[i].getContents()));
+				/*if the value is less than the unicode value for =, then it must be a number
+				 * using short circuiting, two if statements can be merged into one, because the
+				 * if statement must first pass the first condition before the second
+				 */
+				if((curRow[i].compareTo("=") > 0)){ 
+					if(curRow[i].equals("I")){ //if the course has an I, it means it is a current course
+						currentSchedule.add(courseList.getCourse(topRow[i]));
 					}else{
-						coursesTaken.add(addGradedCourse(courseList.getCourse(topRow[i].getContents()), cur[i].getContents()));
+						coursesTaken.add(addGradedCourse(courseList.getCourse(topRow[i]), curRow[i]));
 					}
-					
-				//if the course is not currently in the schedule or already taken, it could be a bidded course //make this part more efficient in the future
-				}else if((cur[i].getType() == CellType.NUMBER) && (Integer.parseInt(cur[i].getContents()) > 0)){
-					bidCourse.add(addBidCourse(courseList.getCourse(topRow[i].getContents()), Integer.parseInt(cur[i].getContents())));
-				}
+				}//if the course is not bid on, nor has a bid, it must be a graded or currently taken course
+				else if(Integer.parseInt(curRow[i]) > 0){
+					bidCourse.add(addBidCourse(courseList.getCourse(topRow[i]), Integer.parseInt(curRow[i])));
+				}	
 				i++;
 			}
 
 			//			creates the student object and adds it to the list
-			newStudent = new Student(coursesTaken, bidCourse, currentSchedule, numID, numPoints, password, username, name, address, countRow-1);
+			newStudent = new Student(coursesTaken, bidCourse, currentSchedule, numID, numPoints, password, username, name, address, countRow);
 			studentList.add(newStudent);
 			countRow++;
-			cur = sheet.getRow(countRow);
 		}
+		scan.close();
 	}
 
 	/**
@@ -94,7 +106,7 @@ public class StudentDatabase {
 
 		int i = 0;
 
-		while(!(studentList.get(i).getUsername().equals(username)) && i<studentList.size()){
+		while(i<studentList.size() && !(studentList.get(i).getUsername().equals(username))){
 			i++;
 		}
 
@@ -129,7 +141,7 @@ public class StudentDatabase {
 	private GradedCourse addGradedCourse(Course taken, String grade){
 
 		return new GradedCourse(taken.getCourseNum(), taken.getCredits(), taken.getCorequisite(), 
-				taken.getPrerequisites(), taken.getCourseDescription(), taken.getTimeSlot(), taken.getDataColCourse(), grade);
+				taken.getPrerequisites(), taken.getCourseDescription(), taken.getDataColCourse(), grade);
 
 	}
 
@@ -141,7 +153,7 @@ public class StudentDatabase {
 	 */
 	private BidCourse addBidCourse(Course bidC, int bidPoints){
 		return new BidCourse(bidC.getCourseNum(), bidC.getCredits(), bidC.getCorequisite(), 
-				bidC.getPrerequisites(), bidC.getCourseDescription(), bidC.getTimeSlot(), bidC.getDataColCourse(), bidPoints);
+				bidC.getPrerequisites(), bidC.getCourseDescription(), bidC.getDataColCourse(), bidPoints);
 	}
 	
 	
@@ -153,6 +165,7 @@ public class StudentDatabase {
 	 */
 
 	public void ScheduleList() {
+		ArrayList<String> schedulelist = new ArrayList<String>();
 	}
 }
 
