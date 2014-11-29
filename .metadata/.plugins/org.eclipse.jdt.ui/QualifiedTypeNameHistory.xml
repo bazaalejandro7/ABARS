@@ -1,16 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.io.IOException"/>
-<<<<<<< HEAD
-<fullyQualifiedTypeName name="java.util.Comparator"/>
-<fullyQualifiedTypeName name="java.text.Collator"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="java.util.Locale"/>
-<fullyQualifiedTypeName name="javax.swing.JPanel"/>
-=======
-<fullyQualifiedTypeName name="javax.swing.SwingUtilities"/>
-<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
-<fullyQualifiedTypeName name="javax.swing.JTextArea"/>
-<fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
->>>>>>> 987293be5a1bb125ae73f5b31f36eff858219673
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>
