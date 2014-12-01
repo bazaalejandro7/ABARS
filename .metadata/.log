@@ -2201,6 +2201,12 @@ org.eclipse.recommenders.utils.Logs$LogTraceException
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
 <<<<<<< HEAD
+=======
+>>>>>>> .merge_file_Rdba7Z
+>>>>>>> origin/master
+!SESSION 2014-11-29 11:45:33.076 -----------------------------------------------
+=======
+<<<<<<< HEAD
 
 !ENTRY org.eclipse.e4.ui.workbench 4 0 2014-11-17 02:58:10.775
 !MESSAGE Unable to load class 'org.eclipse.e4.ui.workbench.renderers.swt.cocoa.FullscreenWindowHandler' from bundle '101'
@@ -2736,10 +2742,20 @@ org.osgi.framework.BundleException: Could not resolve module: org.eclipse.fx.ide
 >>>>>>> .merge_file_Rdba7Z
 >>>>>>> origin/master
 !SESSION 2014-11-24 18:11:52.587 -----------------------------------------------
+>>>>>>> 5a69a698c91deada0931069402a60d462a4b3fc4
 eclipse.buildId=4.4.1.M20140925-0400
 java.version=1.8.0_25
 java.vendor=Oracle Corporation
 BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+<<<<<<< HEAD
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/courtneyfennell/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/courtneyfennell/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.fx.ide.java6 4 0 2014-11-29 11:45:43.601
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.fx.ide.java6 [459]
+=======
 Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/Rasgriz3/.eclipse_keyring -showlocation
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/Rasgriz3/.eclipse_keyring -showlocation
 
@@ -2748,6 +2764,7 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 !STACK 0
 org.osgi.framework.BundleException: Could not resolve module: org.eclipse.fx.ide.java6 [459]
 >>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
+>>>>>>> 5a69a698c91deada0931069402a60d462a4b3fc4
   Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version>=1.3)(!(version>=1.8)))"
 
 	at org.eclipse.osgi.container.Module.start(Module.java:434)
@@ -2760,6 +2777,12 @@ org.osgi.framework.BundleException: Could not resolve module: org.eclipse.fx.ide
 	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
 
 <<<<<<< HEAD
+!ENTRY org.eclipse.core.resources 2 10035 2014-11-29 11:46:13.501
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.m2e.logback.configuration 2 0 2014-11-29 11:46:43.590
+=======
+<<<<<<< HEAD
 !ENTRY org.eclipse.m2e.logback.configuration 2 0 2014-11-25 23:44:16.852
 =======
 !ENTRY org.eclipse.core.resources 2 10035 2014-11-24 18:12:01.121
@@ -2767,6 +2790,7 @@ org.osgi.framework.BundleException: Could not resolve module: org.eclipse.fx.ide
 
 !ENTRY org.eclipse.m2e.logback.configuration 2 0 2014-11-24 18:12:01.396
 >>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
+>>>>>>> 5a69a698c91deada0931069402a60d462a4b3fc4
 !MESSAGE Exception while setting up logging:org.eclipse.osgi.internal.framework.EquinoxConfiguration$1 cannot be cast to java.lang.String
 !STACK 0
 java.lang.ClassCastException: org.eclipse.osgi.internal.framework.EquinoxConfiguration$1 cannot be cast to java.lang.String
@@ -2775,6 +2799,15 @@ java.lang.ClassCastException: org.eclipse.osgi.internal.framework.EquinoxConfigu
 	at org.eclipse.m2e.logback.configuration.LogPlugin.configureLogback(LogPlugin.java:144)
 	at org.eclipse.m2e.logback.configuration.LogPlugin.access$2(LogPlugin.java:107)
 	at org.eclipse.m2e.logback.configuration.LogPlugin$1.run(LogPlugin.java:62)
+<<<<<<< HEAD
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+
+!ENTRY org.eclipse.core.net 1 0 2014-11-29 11:48:17.131
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2014-11-29 11:50:20.646
+=======
 <<<<<<< HEAD
 	at java.util.TimerThread.mainLoop(Unknown Source)
 	at java.util.TimerThread.run(Unknown Source)
@@ -3360,6 +3393,7 @@ Binding(ALT+COMMAND+R,
 	org.eclipse.ui.contexts.window,,cocoa,system)
 
 !ENTRY org.eclipse.jdt.ui 4 10001 2014-11-24 18:14:17.177
+>>>>>>> 5a69a698c91deada0931069402a60d462a4b3fc4
 !MESSAGE Internal Error
 !STACK 1
 org.eclipse.jdt.internal.ui.JavaUIException: Problems reading information from XML 'QualifiedTypeNameHistory.xml'
@@ -3403,7 +3437,11 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; The co
 	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:348)
 	at org.eclipse.jdt.internal.corext.util.History.load(History.java:258)
 	... 21 more
+<<<<<<< HEAD
+!SUBENTRY 1 org.eclipse.jdt.ui 4 4 2014-11-29 11:50:20.647
+=======
 !SUBENTRY 1 org.eclipse.jdt.ui 4 4 2014-11-24 18:14:17.178
+>>>>>>> 5a69a698c91deada0931069402a60d462a4b3fc4
 !MESSAGE Problems reading information from XML 'QualifiedTypeNameHistory.xml'
 !STACK 0
 org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; The content of elements must consist of well-formed character data or markup.
@@ -3421,6 +3459,8 @@ org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 2; The content of el
 	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
 	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:243)
 	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:348)
+<<<<<<< HEAD
+=======
 >>>>>>> 0d04357f3eb2dd3c7ca43fcb337c1f87a9845d46
 	at org.eclipse.jdt.internal.corext.util.History.load(History.java:258)
 	at org.eclipse.jdt.internal.corext.util.History.load(History.java:168)
@@ -5538,6 +5578,7 @@ org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; The markup in the
 	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
 	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:243)
 	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:348)
+>>>>>>> 5a69a698c91deada0931069402a60d462a4b3fc4
 	at org.eclipse.jdt.internal.corext.util.History.load(History.java:258)
 	at org.eclipse.jdt.internal.corext.util.History.load(History.java:168)
 	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.<init>(QualifiedTypeNameHistory.java:33)
