@@ -372,3 +372,4 @@
 2014-11-26 20:02:09,291 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@linkplain}'). Returning original proposal instead.
 2014-11-26 20:02:09,292 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@literal}'). Returning original proposal instead.
 2014-11-26 20:02:09,292 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@since'). Returning original proposal instead.
+2014-12-01 10:39:37,074 [main] WARN  o.e.r.i.c.rcp.TypeBindingAnalyzer - Can't handle class org.eclipse.jdt.internal.compiler.ast.UnaryExpression as parent of completion location.
