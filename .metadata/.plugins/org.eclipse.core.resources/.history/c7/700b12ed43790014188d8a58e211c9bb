@@ -155,7 +155,7 @@ public class StudentDatabase {
 		return new BidCourse(bidC.getCourseNum(), bidC.getCredits(), bidC.getCorequisite(), 
 				bidC.getPrerequisites(), bidC.getCourseDescription(), bidC.getDataColCourse(), bidPoints);
 	}
-}
+	
 	
 	
 //	/**

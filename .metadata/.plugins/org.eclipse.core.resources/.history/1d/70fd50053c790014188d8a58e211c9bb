@@ -12,8 +12,6 @@
 import java.io.*;
 import java.util.*;
 
-import com.sun.xml.internal.ws.developer.MemberSubmissionAddressing.Validation;
-
 /**
  * 
  * @author Alejandro baza
@@ -21,49 +19,38 @@ import com.sun.xml.internal.ws.developer.MemberSubmissionAddressing.Validation;
  *
  */
 public class AdministratorDatabase {
-
-	private Scanner	AdministratorDB;
+	
+private Scanner	AdministratorDB;
 
 	/**
-	 * @author Alejandro Baza
 	 * This method opens the required txt file
 	 */
 
-	public void openAdministratorFile () {
+	public void openFile () {
 		try {
-			AdministratorDB = new Scanner(new File ("AdministratorDatabase.txt"));
+			AdministratorDB = new Scanner(new File ("chinese.txt"));
 		}
 		catch (Exception e) {
 			System.out.println("could not find file that contains the adminsitrator's information");
 		}
 	}
-
+	
 	/**
-	 * @author Alejandro Baza
 	 * This method reads the txt file and assigns variables to the username and password
 	 */
-
-	public void readAdministratorFile () {
+	
+	public void readFile () {
 		while (AdministratorDB.hasNext()) {
-			String Administratorusername = AdministratorDB.next();
-			String Administratorpassword = AdministratorDB.next();
+			String username = AdministratorDB.next();
+			String password = AdministratorDB.next();
 		}
 	}
-
+	
 	/**
-	 * @author Alejandro Baza
 	 * This method closes the txt file
 	 */
-
-	public void closeAdministratorFile () {
+	
+	public void closeFile () {
 		AdministratorDB.close();
 	}
 }
-	/**
-	 * @author Alejandro Baza
-	 * This method checks the administrator's username and password
-	 * @return validation of the information to the Login class
-	 * 
-	 */
-	
-	////// VALIDATION OF USERNAME AND PASSWORD FOR THE ADMINISTRATOR/////

@@ -1,0 +1,55 @@
+/**
+ * 
+ * Author: Alejandro Baza
+ * @date 2014-10-11
+ * Description: This file contains the methods that read from the AdministratorDatabase for administrator
+ * usernames and passwords
+ * version 1.4
+ * 
+ */
+
+//Import the necessary packages
+import java.io.*;
+import java.util.*;
+
+/**
+ * 
+ * @author Alejandro baza
+ * This class uses methods to open, read and close a txt file in order to find the administrator username and password
+ *
+ */
+public class AdministratorDatabase {
+	
+private Scanner	AdministratorDB;
+
+	/**
+	 * This method opens the required txt file
+	 */
+	public void openFile () {
+		try {
+			AdministratorDB = new Scanner(new File ("chinese.txt"));
+		}
+		catch (Exception e) {
+			System.out.println("could not find file");
+		}
+	}
+	
+	/**
+	 * This method reads the txt file and assigns variables to the username and password
+	 */
+	
+	public void readFile () {
+		while (AdministratorDB.hasNext()) {
+			String username = AdministratorDB.next();
+			String password = AdministratorDB.next();
+		}
+	}
+	
+	/**
+	 * This method closes the txt file
+	 */
+	
+	public void closeFile () {
+		AdministratorDB.close();
+	}
+}

@@ -58,12 +58,3 @@ public class AdministratorDatabase {
 	public void closeAdministratorFile () {
 		AdministratorDB.close();
 	}
-}
-	/**
-	 * @author Alejandro Baza
-	 * This method checks the administrator's username and password
-	 * @return validation of the information to the Login class
-	 * 
-	 */
-	
-	////// VALIDATION OF USERNAME AND PASSWORD FOR THE ADMINISTRATOR/////
