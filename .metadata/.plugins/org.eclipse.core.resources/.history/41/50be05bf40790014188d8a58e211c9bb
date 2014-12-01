@@ -29,7 +29,7 @@ public class AdministratorDatabase {
 	 * This method opens the required txt file
 	 */
 
-	public void openAdministratorFile () {
+	public void openFile () {
 		try {
 			AdministratorDB = new Scanner(new File ("AdministratorDatabase.txt"));
 		}
@@ -43,7 +43,7 @@ public class AdministratorDatabase {
 	 * This method reads the txt file and assigns variables to the username and password
 	 */
 
-	public void readAdministratorFile () {
+	public void readFile () {
 		while (AdministratorDB.hasNext()) {
 			String Administratorusername = AdministratorDB.next();
 			String Administratorpassword = AdministratorDB.next();
@@ -55,15 +55,25 @@ public class AdministratorDatabase {
 	 * This method closes the txt file
 	 */
 
-	public void closeAdministratorFile () {
+	public void closeFile () {
 		AdministratorDB.close();
 	}
-}
+
 	/**
 	 * @author Alejandro Baza
 	 * This method checks the administrator's username and password
+	 * @param Administratorusername - input administrator's username 
+	 * @param Administratorpassword - input administrator's password
+	 * @return 
 	 * @return validation of the information to the Login class
 	 * 
 	 */
 	
-	////// VALIDATION OF USERNAME AND PASSWORD FOR THE ADMINISTRATOR/////
+	public Administrator Validation(String Administratorusername, String Administratorpassword) {
+		String user = Administratorusername;
+		if( user != null && Administratorpassword.equals(user.Administratorpassword));
+		return user;
+	}else{
+		return;
+	}
+}

@@ -155,34 +155,19 @@ public class StudentDatabase {
 		return new BidCourse(bidC.getCourseNum(), bidC.getCredits(), bidC.getCorequisite(), 
 				bidC.getPrerequisites(), bidC.getCourseDescription(), bidC.getDataColCourse(), bidPoints);
 	}
+	
+	
+	
+	/**
+	 * @author Alejandro Baza
+	 * This method puts the courses that the student bid for into a list that will be the schedule
+	 * 
+	 */
+
+	public void ScheduleList() {
+		ArrayList<String> schedulelist = new ArrayList<String>();
+	}
 }
-	
-	
-//	/**
-//	 * @author Alejandro Baza
-//	 * This method puts the courses that the student bid for into a list that will be the schedule
-//	 * @param Bidcourses 
-//	 * 
-//	 */
-//
-//	public Student searchForbid(int Bidcourses) {
-//		ArrayList<String> schedulelist = new ArrayList<String>();
-//		
-//			int i = 0;
-//
-//			while(i<schedulelist.size() && !(schedulelist.get(i).getBidcourses().equals(Bidcourses))){
-//				i++;
-//			}
-//
-//			if(i == studentList.size()){
-//				return null;
-//			}else{
-//				return studentList.get(i);
-//			}
-//		}
-//		return null;
-//	}
-//}
 
 
 //end StudentDatabase

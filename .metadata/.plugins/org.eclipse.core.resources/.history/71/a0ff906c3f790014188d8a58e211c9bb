@@ -1,0 +1,42 @@
+/**
+ * 
+ * Author: Alejandro Baza
+ * @date 2014-25-11
+ * Description: This file contains the methods that provide an Administrator with privileges
+ * 
+ */
+
+/**
+ * 
+ * @author Alejandro Baza
+ * This class contains the administrator information in order to login as an administrator
+ * 
+ */
+
+public class Administrator {
+//Set variables
+	private String Administratorusername; 
+	private String Administratorpassword;
+	
+	Administratorusername = Sherrinford;
+	
+}
+
+
+//public class Administrator extends Login {
+//	
+//	//Given the user's username and password
+//	public Administrator(String username, String password) {
+//		super(username, password);
+//		
+//	}
+//	//Provides the user with administrator privileges
+//	public boolean AdministratorPrivileges() {
+//
+//		//Set administrator to false
+//		administratorDB = false;
+//		if (administratorDB == true) {
+//			////////Administrator Privileges ON///////////
+//		}
+//	}
+//}

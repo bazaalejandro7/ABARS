@@ -58,7 +58,7 @@ public class AdministratorDatabase {
 	public void closeAdministratorFile () {
 		AdministratorDB.close();
 	}
-}
+
 	/**
 	 * @author Alejandro Baza
 	 * This method checks the administrator's username and password
@@ -66,4 +66,6 @@ public class AdministratorDatabase {
 	 * 
 	 */
 	
-	////// VALIDATION OF USERNAME AND PASSWORD FOR THE ADMINISTRATOR/////
+	public void Validation() {
+		 if 
+		}

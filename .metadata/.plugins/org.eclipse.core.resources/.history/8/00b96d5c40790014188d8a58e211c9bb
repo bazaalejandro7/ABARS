@@ -22,19 +22,4 @@ public class Administrator {
 		this.Administratorusername = Administratorusername;
 		this.Administratorpassword = Administratorpassword;
 	}
-	/**
-	 * @author Alejandro Baza
-	 * @return Administrator's login username
-	 */
-	public String getAdministratorusername() {
-		return Administratorusername;
-	}
-	
-	/**
-	 * @author Alejandro Baza
-	 * @return Administrator's login password
-	 */
-	public String getAdministratorpassword() {
-		return Administratorpassword;
-	}
 }
