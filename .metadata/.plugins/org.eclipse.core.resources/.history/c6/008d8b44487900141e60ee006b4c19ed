@@ -17,7 +17,6 @@ import java.util.Locale;
 
 public class AuctionRunner {
 
-	
 	//	/**
 	//	 * 
 	//	 * @author Alejandro Baza
@@ -36,23 +35,21 @@ public class AuctionRunner {
 	 */
 
 	public void SortList(String x[]) {
-		int j;
-		boolean flag = true;  //Determines when the sort stops
-		String temp;
+		  int j;
+          boolean flag = true;  //Determines when the sort stops
+          String temp;
 
-		while ( flag )
-		{
-			flag = false;
-			for ( j = 0;  j < x.length - 1;  j++ )
-			{	//Sort
-				if ( x [ j ].compareToIgnoreCase( x [ j+1 ] ) > 0 ) 
-				{                                            
-					temp = x [ j ];
-					x [ j ] = x [ j+1]; 
-					x [ j+1] = temp; 
-					flag = true;
-				}
-			}
+          while ( flag )
+          {
+                flag = false;
+                for ( j = 0;  j < x.length - 1;  j++ )
+                {	//Sort
+                        if ( x [ j ].compareToIgnoreCase( x [ j+1 ] ) > 0 ) 
+                        {                                            
+                                    temp = x [ j ];
+                                    x [ j ] = x [ j+1]; 
+                                    x [ j+1] = temp; 
+                                    flag = true;
 		}
 	}
-}
+

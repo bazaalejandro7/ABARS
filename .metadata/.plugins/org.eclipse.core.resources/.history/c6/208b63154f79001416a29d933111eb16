@@ -23,7 +23,7 @@ public class Student {
 	 * course. Only two columns, second number should never exceed 1 (0 is first
 	 * column, 1 is second).
 	 */
-	private ArrayList<Student> studentsbidding;
+	private ArrayList<BidCourse> students;
 	private ArrayList<BidCourse> bidCourses;
 	private ArrayList<GradedCourse> coursesTaken;
 	private ArrayList<Course> currentSchedule;
@@ -214,15 +214,6 @@ public class Student {
 		writeDatabase(4, text);
 	}
 	
-	
-	/**
-	 * @author William Merritt
-	 * 
-	 * @param Password that is to be set
-	 */
-	public void setPassword(String password){
-		this.password=password;
-	}
 	/**
 	 * @author Matthew Alpert
 	 * @return ArrayList of type GradedCourse which hold a list of courses graded and taken. Used in transcript
@@ -239,14 +230,14 @@ public class Student {
 		return bidCourses;
 	}
 	
-	/**
-	 * @author Alejandro Baza
-	 * @return ArrayList of type Student which hold a list of students that have bid on courses.
-	 */
-	public ArrayList<Student> getstudents() {
-	return studentsbidding;
-	}
-	
+//	/**
+//	 * @author Alejandro Baza
+//	 * @return ArrayList of type student which hold a list of students that have bid on courses.
+//	 */
+//	public ArrayList<BidCourse> getBidCourses(){
+//	return students
+//		
+//	}
 	/**
 	 * @author Matthew Alpert
 	 * @param col - column to be written over
@@ -326,11 +317,6 @@ public class Student {
 		}
 		
 		writer.close();
-	}
-
-	public boolean setPassword(String string, String string2) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	
 }//end Student
