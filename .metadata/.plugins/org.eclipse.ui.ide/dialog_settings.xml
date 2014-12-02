@@ -4,7 +4,11 @@
 		<item value="525" key="DIALOG_WIDTH"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
 		<item value="529" key="DIALOG_HEIGHT"/>
+<<<<<<< HEAD
 		<item value="427" key="DIALOG_X_ORIGIN"/>
+=======
+		<item value="695" key="DIALOG_X_ORIGIN"/>
+>>>>>>> 7d5abab23bf05c69c902db307ac4d7864eac8d0d
 		<item value="22" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

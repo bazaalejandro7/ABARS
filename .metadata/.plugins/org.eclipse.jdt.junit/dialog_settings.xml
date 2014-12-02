@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="JUnitWizards">
+<<<<<<< HEAD
+=======
+		<item value="false" key="NewTestCaseCreationWizardPage.USE_TEARDOWNCLASS"/>
+		<item value="false" key="NewTestCaseCreationWizardPage.USE_SETUP"/>
+		<item value="false" key="NewTestCaseCreationWizardPage.USE_TEARDOWN"/>
+		<item value="false" key="NewTestCaseCreationWizardPage.USE_CONSTRUCTOR"/>
+		<item value="false" key="NewTestCaseCreationWizardPage.USE_SETUPCLASS"/>
+>>>>>>> 7d5abab23bf05c69c902db307ac4d7864eac8d0d
 	</section>
 </section>

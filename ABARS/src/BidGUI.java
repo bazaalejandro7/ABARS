@@ -11,8 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-
-import jxl.read.biff.BiffException;
 /**
  * Course: SE 300- 01
  * Term: Fall 2014
@@ -33,7 +31,7 @@ public class BidGUI extends JPanel {
 	 * @throws BiffException
 	 * @throws IOException
 	 */
-	public BidGUI(Student student) throws BiffException, IOException{
+	public BidGUI(Student student) throws IOException{
 		//this is where a student can drop a class
 		innerPanel = new JPanel();
 		currStudent = student;
@@ -85,7 +83,7 @@ public class BidGUI extends JPanel {
 	 * @throws IOException
 	 * @created November 10, 2014
 	 */
-	public BidGUI setupPanel() throws BiffException, IOException{
+	public BidGUI setupPanel() throws IOException{
 		if(!currStudent.getBidCourses().isEmpty()){
 			return new BidGUI(currStudent);
 		}

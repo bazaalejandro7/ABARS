@@ -2,8 +2,6 @@ import java.io.IOException;
 
 import javax.swing.JScrollPane;
 
-import jxl.read.biff.BiffException;
-
 /**
  * Course: SE 300- 01
  * Term: Fall 2014
@@ -19,7 +17,7 @@ public class RegisterPaneGUI extends JScrollPane {
 	 * @throws BiffException
 	 * @throws IOException
 	 */
-	public RegisterPaneGUI(Student student) throws BiffException, IOException{
+	public RegisterPaneGUI(Student student) throws IOException{
 		RegisterGUI register = new RegisterGUI(student);
 		this.getViewport().add(register);
 	}

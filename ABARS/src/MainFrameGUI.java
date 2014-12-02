@@ -13,8 +13,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-
-import jxl.read.biff.BiffException;
 /**
  * Course: SE 300- 01
  * Term: Fall 2014
@@ -49,7 +47,7 @@ public class MainFrameGUI extends JFrame {
  * @throws BiffException
  * @throws IOException
  */
-	public MainFrameGUI(Student currStudent) throws BiffException, IOException{
+	public MainFrameGUI(Student currStudent) throws IOException{
 
 		daGUI = new DegreeAuditGUI(currStudent);
 		
@@ -141,7 +139,7 @@ public class MainFrameGUI extends JFrame {
 		try {
 			daGUI = new DegreeAuditGUI(currStudent);
 
-		} catch (BiffException | IOException e1) {
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 
@@ -181,7 +179,7 @@ public class MainFrameGUI extends JFrame {
 	public void logout(){
 		try {
 			Starter.main(null);
-		} catch (BiffException | IOException e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -222,7 +220,7 @@ public class MainFrameGUI extends JFrame {
 			bidPanel = null;
 			try {
 				bidPanel = new BidGUI(currStudent);
-			} catch (BiffException | IOException e1) {
+			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
