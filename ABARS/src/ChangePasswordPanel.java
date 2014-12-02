@@ -55,11 +55,12 @@ public class ChangePasswordPanel extends JPanel {
 	class ChangePasswordListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			if(new String(passFields[1].getPassword()).equals(new String(passFields[2].getPassword()))){
-				if(!student.setPassword(new String(passFields[0].getPassword()), new String(passFields[1].getPassword()))){
+				if(!student.getPassword().equals(new String(passFields[0].getPassword()))){
 					JOptionPane.showMessageDialog(null, "ERROR: Incorrect Password");
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Password Successfully Changed");
+					student.setPassword(new String (passFields[1].getPassword()));
 					thisFrame.dispose();
 				}
 			}

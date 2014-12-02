@@ -12,6 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+
 //import sun.awt.RepaintArea;
 import jxl.read.biff.BiffException;
 
@@ -93,7 +94,23 @@ public class RegisterGUI extends JPanel {
 			String input = JOptionPane.showInputDialog(text);
 
 					if (input !=null) {
-						boolean success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+<<<<<<< HEAD
+						boolean success = false;
+						try {
+							success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+						} catch (NumberFormatException | IOException e1) {
+=======
+						boolean success=false;
+						try {
+							success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+						} catch (NumberFormatException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+>>>>>>> origin/master
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						if(success){
 							ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
 							JOptionPane.showMessageDialog(null, 

@@ -1,0 +1,71 @@
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+/**
+ * 
+ */
+
+/**
+ * @author courtneyfennell
+ *
+ */
+public class JUnitCourtney {
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testStudentDatabse() {
+		try {
+			new StudentDatabase();
+		} catch (IOException | IndexOutOfBoundsException e) {
+			fail("The student database was not successfully generated");
+		}
+		
+
+	}
+	@Test
+	public void testSearch() {
+		StudentDatabase studentDB = null;
+		try {
+			studentDB = new StudentDatabase();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertEquals(null,studentDB.Validate("painT", "Eagles"));
+		
+	}
+}

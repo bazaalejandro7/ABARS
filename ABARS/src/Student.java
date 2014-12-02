@@ -214,6 +214,15 @@ public class Student {
 		writeDatabase(4, text);
 	}
 	
+	
+	/**
+	 * @author William Merritt
+	 * 
+	 * @param Password that is to be set
+	 */
+	public void setPassword(String password){
+		this.password=password;
+	}
 	/**
 	 * @author Matthew Alpert
 	 * @return ArrayList of type GradedCourse which hold a list of courses graded and taken. Used in transcript
@@ -317,6 +326,11 @@ public class Student {
 		}
 		
 		writer.close();
+	}
+
+	public boolean setPassword(String string, String string2) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }//end Student
