@@ -6,8 +6,6 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import jxl.read.biff.BiffException;
-
 /**
  * Course: SE 300- 01
  * Term: Fall 2014
@@ -33,7 +31,7 @@ public class DegreeAuditGUI extends JPanel {
 	 * @throws BiffException
 	 * @throws IOException
 	 */
-	public DegreeAuditGUI(Student Student1) throws BiffException, IOException{
+	public DegreeAuditGUI(Student Student1) throws IOException{
 		cd = new CourseDatabase();
 		currStudent = Student1;
 		//get all courses

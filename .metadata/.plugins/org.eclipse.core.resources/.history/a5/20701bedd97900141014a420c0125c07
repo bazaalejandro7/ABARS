@@ -1,0 +1,60 @@
+import static org.junit.Assert.*;
+import java.io.IOException;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+/**
+ * This  class is responsible for testing the Administrator class.
+ * 
+ * @version 1.0
+ * @author Alejandro Baza
+ */
+
+public class JUnitAlejandro {
+
+	@BeforeClass
+	// This method is called only once at the beginning, each time JUnit is run.
+	public static void setUpBeforeClass() throws Exception {
+		System.out.println("setUpBeforeClass: Preparing to run unit tests...\n");
+	}
+
+	@AfterClass
+	// This method is called only once at the end, each time JUnit is run.
+	public static void tearDownAfterClass() throws Exception {
+		System.out.println("tearDownAfterClass:Exiting unit tests...\n");
+	}
+
+	@Before
+	// This method is called right before each individual @Test method,
+	// but AFTER the class constructor is called.
+	public void setUp() throws Exception {
+		System.out.println("Starting a test\n");
+	}
+
+	@After
+	// This method is called right after each individual @Test method.
+	public void tearDown() throws Exception {
+		System.out.println("tearDown:Test complete\n\n");
+	}
+
+	// This constructor is called once for each @Test, before the setUp() method is called
+	public JUnitAlejandro() {
+		System.out.println("AnalyzerTests class constructed...");
+	}
+
+
+	@Test
+	// This test checks the validation at the login time of the Administrator Username
+	public void testAdministratorUsername() {
+		try {
+			Login login = new Login("","");
+			if(login.AdministratorLoginCheck() != null) {
+				fail("Administrator not found");
+			}
+		} catch(IndexOutOfBoundsException e){
+			fail("Exception Thrown");
+		}
+	}
+}

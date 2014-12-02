@@ -157,12 +157,4 @@ public class StudentDatabase {
 	}
 }
 
-/**
- * @author Alejandro Baza
- * This method puts the courses that the student bid for into a list that will be the schedule
- * 
- */
-
-public static <>
-
 //end StudentDatabase

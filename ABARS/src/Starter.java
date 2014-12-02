@@ -1,7 +1,5 @@
 import java.io.IOException;
 
-import jxl.read.biff.BiffException;
-
 /**
  * 
  * @author Courtney Fennell
@@ -10,19 +8,14 @@ import jxl.read.biff.BiffException;
  *
  */
 public class Starter {
-
-<<<<<<< HEAD
-	public static void main(String[] args) throws BiffException, IOException {
+	
+	public static void main(String[] args) throws IOException {
 		//if(currStudent.isInstanceof(Student))
 			//new MainFrameGUI(currStudent);
 		//else
 			//new AdminGUI();
 			
 	}
-	
-=======
-
->>>>>>> origin/master
 	public Starter(){
 		
 	}
@@ -33,13 +26,9 @@ public class Starter {
 	public void startMain(Student student){;
 		try {
 			new MainFrameGUI(student);
-		} catch (BiffException | IOException e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 	}
 }

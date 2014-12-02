@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 
 
 //import sun.awt.RepaintArea;
-import jxl.read.biff.BiffException;
 
 /**
  * Course: SE 300- 01
@@ -39,7 +38,7 @@ public class RegisterGUI extends JPanel {
 	 * @throws BiffException
 	 * @throws IOException
 	 */
-	public RegisterGUI(Student student) throws BiffException, IOException{
+	public RegisterGUI(Student student) throws IOException{
 		JPanel labelPanel=new JPanel();
 		
 		currStudent = student;
@@ -94,22 +93,19 @@ public class RegisterGUI extends JPanel {
 			String input = JOptionPane.showInputDialog(text);
 
 					if (input !=null) {
-<<<<<<< HEAD
 						boolean success = false;
 						try {
 							success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
 						} catch (NumberFormatException | IOException e1) {
-=======
-						boolean success=false;
+						success=false;
 						try {
 							success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
-						} catch (NumberFormatException e1) {
+						} catch (NumberFormatException e11) {
 							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (IOException e1) {
->>>>>>> origin/master
+							e11.printStackTrace();
+						} catch (IOException e11) {
 							// TODO Auto-generated catch block
-							e1.printStackTrace();
+							e11.printStackTrace();
 						}
 						if(success){
 							ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
@@ -140,6 +136,7 @@ public class RegisterGUI extends JPanel {
 			JOptionPane.showMessageDialog(null, "<html><body><p style='width: 200px;'>"+String.format("%s: %s", course.getCourseNum(),course.getCourseDescription())+"</body></html>");
 		}
 		
+	}
 	}
 }
 
