@@ -83,6 +83,7 @@ public class LoginGUI extends JFrame{
 	private class LoginButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			Student tempStudent;
+			try{
 				Login login=new Login(userField.getText(),new String(passField.getPassword()));
 
 				tempStudent=login.ValidateLoginStudent();
@@ -94,6 +95,10 @@ public class LoginGUI extends JFrame{
 				else{
 					JOptionPane.showMessageDialog(null, "Incorrect Username/Password");
 				}
+			}
+			catch(IndexOutOfBoundsException exp){
+				JOptionPane.showMessageDialog(null, "Incorrect Username/Password");
+			}
 
 
 

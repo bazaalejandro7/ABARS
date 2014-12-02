@@ -11,6 +11,7 @@ import jxl.read.biff.BiffException;
  */
 public class Starter {
 
+<<<<<<< HEAD
 	public static void main(String[] args) throws BiffException, IOException {
 		//if(currStudent.isInstanceof(Student))
 			//new MainFrameGUI(currStudent);
@@ -19,6 +20,9 @@ public class Starter {
 			
 	}
 	
+=======
+
+>>>>>>> origin/master
 	public Starter(){
 		
 	}
@@ -33,5 +37,9 @@ public class Starter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 	}
 }
