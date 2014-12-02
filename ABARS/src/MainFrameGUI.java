@@ -179,7 +179,12 @@ public class MainFrameGUI extends JFrame {
 
 	}
 	public void logout(){
-		Starter.main(null);
+		try {
+			Starter.main(null);
+		} catch (BiffException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		frame.dispose();
 		this.dispose();
 	}

@@ -10,25 +10,17 @@ import jxl.read.biff.BiffException;
  *
  */
 public class Starter {
-<<<<<<< HEAD
 
 	public static void main(String[] args) throws BiffException, IOException {
-		Student currStudent =LoginGUI.loginInStudent();
 		//if(currStudent.isInstanceof(Student))
-			new MainFrameGUI(currStudent);
+			//new MainFrameGUI(currStudent);
 		//else
 			//new AdminGUI();
 			
-
-=======
+	}
 	
 	public Starter(){
 		
-	}
-	
-	public static void main(String[] args) {;
-		Starter start=new Starter();
-		start.createLogin();
 	}
 	
 	public void createLogin(){
@@ -41,6 +33,5 @@ public class Starter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
->>>>>>> 5a69a698c91deada0931069402a60d462a4b3fc4
 	}
 }

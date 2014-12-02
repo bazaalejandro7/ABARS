@@ -308,5 +308,10 @@ public class Student {
 		
 		writer.close();
 	}
+
+	public boolean setPassword(String string, String string2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }//end Student
