@@ -88,7 +88,7 @@ public class StudentDatabase {
 				i++;
 			}
 
-			//creates the student object and adds it to the list
+			//			creates the student object and adds it to the list
 			newStudent = new Student(coursesTaken, bidCourse, currentSchedule, numID, numPoints, password, username, name, address, countRow);
 			studentList.add(newStudent);
 			countRow++;
@@ -163,6 +163,25 @@ public class StudentDatabase {
  * 
  */
 
-public static <>
+//
+//	public Student searchForbid(int Bidcourses) {
+//		ArrayList<String> schedulelist = new ArrayList<String>();
+//		
+//			int i = 0;
+//
+//			while(i<schedulelist.size() && !(schedulelist.get(i).getBidcourses().equals(Bidcourses))){
+//				i++;
+//			}
+//
+//			if(i == studentList.size()){
+//				return null;
+//			}else{
+//				return studentList.get(i);
+//			}
+//		}
+//		return null;
+//	}
+//}
+
 
 //end StudentDatabase

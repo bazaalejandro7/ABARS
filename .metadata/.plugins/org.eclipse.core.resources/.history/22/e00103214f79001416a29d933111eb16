@@ -232,7 +232,7 @@ public class Student {
 	
 	/**
 	 * @author Alejandro Baza
-	 * @return ArrayList of type Student which hold a list of students that have bid on courses.
+	 * @return ArrayList of type student which hold a list of students that have bid on courses.
 	 */
 	public ArrayList<Student> getstudents() {
 	return studentsbidding;

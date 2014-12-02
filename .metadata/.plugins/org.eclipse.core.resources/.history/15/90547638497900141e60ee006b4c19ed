@@ -21,7 +21,7 @@ public class StudentDatabase {
 	public File file;
 	BufferedWriter writer = null;
 	BufferedReader reader = null;
-
+	
 	/**
 	 * @author Matthew Alpert
 	 * @throws BiffException
@@ -29,27 +29,27 @@ public class StudentDatabase {
 	 * Constructs the student database
 	 */
 	public StudentDatabase() throws IOException{
-
+		
 		file = new File("StudentDb.txt");
 		Scanner scan = new Scanner(file);
-
+		
 		String[] curRow = new String[46];
 		String[] topRow = new String[46]; //reference points
 		topRow = scan.nextLine().split("	"); //sets the scanner at the correct position in the database and creates topRow reference points
-
+		
 		CourseDatabase courseList = new CourseDatabase();
 		Student newStudent; //student object holder
-
+		
 		//arrays of types of course objects inside a student object
 		ArrayList<GradedCourse> coursesTaken = new ArrayList<GradedCourse>();
 		ArrayList<BidCourse> bidCourse = new ArrayList<BidCourse>();
 		ArrayList<Course> currentSchedule = new ArrayList<Course>();
-
+		
 		//information related to the individual student
 		int numID, numPoints;
 		String password, username, name, address;
 		studentList = new ArrayList<Student>();
-
+		
 		int countRow = 1;
 		int i;
 
@@ -88,7 +88,7 @@ public class StudentDatabase {
 				i++;
 			}
 
-			//creates the student object and adds it to the list
+			//			creates the student object and adds it to the list
 			newStudent = new Student(coursesTaken, bidCourse, currentSchedule, numID, numPoints, password, username, name, address, countRow);
 			studentList.add(newStudent);
 			countRow++;
@@ -156,13 +156,33 @@ public class StudentDatabase {
 				bidC.getPrerequisites(), bidC.getCourseDescription(), bidC.getDataColCourse(), bidPoints);
 	}
 }
+	
+	
+	/**
+	 * @author Alejandro Baza
+	 * This method puts the courses that the student bid for into a list that will be the schedule
+	 * 
+	 */
+	
+//
+//	public Student searchForbid(int Bidcourses) {
+//		ArrayList<String> schedulelist = new ArrayList<String>();
+//		
+//			int i = 0;
+//
+//			while(i<schedulelist.size() && !(schedulelist.get(i).getBidcourses().equals(Bidcourses))){
+//				i++;
+//			}
+//
+//			if(i == studentList.size()){
+//				return null;
+//			}else{
+//				return studentList.get(i);
+//			}
+//		}
+//		return null;
+//	}
+//}
 
-/**
- * @author Alejandro Baza
- * This method puts the courses that the student bid for into a list that will be the schedule
- * 
- */
-
-public static <>
 
 //end StudentDatabase

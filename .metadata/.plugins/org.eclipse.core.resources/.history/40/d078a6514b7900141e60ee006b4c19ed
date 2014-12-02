@@ -23,7 +23,6 @@ public class Student {
 	 * course. Only two columns, second number should never exceed 1 (0 is first
 	 * column, 1 is second).
 	 */
-	private ArrayList<Student> studentsbidding;
 	private ArrayList<BidCourse> bidCourses;
 	private ArrayList<GradedCourse> coursesTaken;
 	private ArrayList<Course> currentSchedule;
@@ -221,21 +220,12 @@ public class Student {
 	public ArrayList<GradedCourse> getCoursesTaken(){
 		return coursesTaken;
 	}
-	
 	/**
 	 * @author Courtney Fennell
 	 * @return ArrayList of type BidCourse which hold a list of courses the student has bid on.
 	 */
 	public ArrayList<BidCourse> getBidCourses(){
 		return bidCourses;
-	}
-	
-	/**
-	 * @author Alejandro Baza
-	 * @return ArrayList of type Student which hold a list of students that have bid on courses.
-	 */
-	public ArrayList<Student> getstudents() {
-	return studentsbidding;
 	}
 	
 	/**
