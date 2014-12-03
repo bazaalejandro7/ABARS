@@ -17,7 +17,6 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 import jxl.read.biff.File;
 
@@ -49,7 +48,12 @@ public class LoginGUI extends JFrame{
 		JPanel superPanel=new JPanel();
 
 		superPanel.setLayout(new BorderLayout());
+<<<<<<< HEAD
+
 		panel.setLayout(new BoxLayout( panel, BoxLayout.Y_AXIS));
+=======
+		panel.setLayout(new GridLayout(5,1));
+>>>>>>> d6f28fd01b3bcfeb7278ae54a5fb6565e37c7757
 
 		userField=new JTextField();
 		passField=new JPasswordField();
@@ -57,13 +61,9 @@ public class LoginGUI extends JFrame{
 		button.addActionListener(new LoginButtonListener());
 		passField.addActionListener(new LoginButtonListener());
 
-		try{
-			BufferedImage image = ImageIO.read(this.getClass().getResource("erau.jpg"));
-			JLabel icon = new JLabel(new ImageIcon(image));
-			panel.add(icon);
-		}catch(IOException e ){
-			
-		}
+		JLabel image = new JLabel(new ImageIcon("erau.jpg"));
+
+		panel.add(image);
 		panel.add(new JLabel("Enter Username"));
 		panel.add(userField);
 		panel.add(new JLabel("Password"));

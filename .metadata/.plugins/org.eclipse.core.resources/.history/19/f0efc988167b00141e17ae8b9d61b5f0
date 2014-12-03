@@ -17,7 +17,6 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 import jxl.read.biff.File;
 
@@ -62,8 +61,8 @@ public class LoginGUI extends JFrame{
 			JLabel icon = new JLabel(new ImageIcon(image));
 			panel.add(icon);
 		}catch(IOException e ){
-			
-		}
+			System.out.println("image not available");
+
 		panel.add(new JLabel("Enter Username"));
 		panel.add(userField);
 		panel.add(new JLabel("Password"));
