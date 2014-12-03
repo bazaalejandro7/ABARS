@@ -88,7 +88,7 @@ public class BidGUI extends JPanel {
 			return new BidGUI(currStudent);
 		}
 		else{
-			ImageIcon image = new ImageIcon(getClass().getResource("fry.jpg"));
+			ImageIcon image = new ImageIcon(getClass().getResource("anykey.gif"));
 			JOptionPane.showMessageDialog(null, 
 					"I'm sorry there's nothing here. Try bidding on a class first.", 
 					"Nothing is here", JOptionPane.PLAIN_MESSAGE , image);

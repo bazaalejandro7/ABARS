@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 
 //import sun.awt.RepaintArea;
@@ -40,13 +39,13 @@ public class RegisterGUI extends JPanel {
 	 */
 	public RegisterGUI(Student student) throws IOException{
 		JPanel labelPanel=new JPanel();
-		
+
 		currStudent = student;
 		cd = new CourseDatabase();
 		allCourses = cd.getCourseList();
 		gradedCourses = currStudent.getCoursesTaken();
 		i = gradedCourses.size();
-		
+
 		//add layout manager
 		this.setLayout(new GridLayout(30, 1));
 		labelPanel.setLayout(new GridLayout(1,3));
@@ -59,13 +58,13 @@ public class RegisterGUI extends JPanel {
 		//continue from same spot for the rest of the courses without grades
 		for(;i<allCourses.size();i++){
 			JPanel tempPanel=new JPanel();
-			
+
 			Course currCourse = allCourses.get(i);
 			JRadioButton currLabel = new JRadioButton(currCourse.getCourseNum());
 			JButton currButton=new JButton("Description");
-			
+
 			tempPanel.setLayout(new GridLayout(1,3));
-			
+
 			currLabel.addActionListener(new Listener());
 			currLabel.setActionCommand(Integer.toString(i));
 
@@ -75,7 +74,7 @@ public class RegisterGUI extends JPanel {
 
 			JLabel creditsLabel = new JLabel(Integer.toString(currCourse.getCredits()));
 			tempPanel.add(creditsLabel);
-			
+
 			//TODO get the buttons to add correctly
 			tempPanel.add(currButton);
 			this.add(tempPanel);
@@ -88,55 +87,56 @@ public class RegisterGUI extends JPanel {
 
 			int action = Integer.parseInt(e.getActionCommand());
 			Course chosenCourse = allCourses.get(action);
-		
+
 			String text = String.format("You have %d points.\nEnter the number of points you want to bid:", currStudent.getNumPoints());
 			String input = JOptionPane.showInputDialog(text);
 
-					if (input !=null) {
-						boolean success = false;
-						try {
-							success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
-						} catch (NumberFormatException | IOException e1) {
-						success=false;
-						try {
-							success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
-						} catch (NumberFormatException e11) {
-							// TODO Auto-generated catch block
-							e11.printStackTrace();
-						} catch (IOException e11) {
-							// TODO Auto-generated catch block
-							e11.printStackTrace();
-						}
-						if(success){
-							ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
-							JOptionPane.showMessageDialog(null, 
-									"You have successfully added your class!", 
-									"Add Class Confimation", JOptionPane.PLAIN_MESSAGE , image);
-
-						}
-						else{
-							ImageIcon image = new ImageIcon(getClass().getResource("127.gif"));
-							JOptionPane.showMessageDialog(null, 
-									"I'm sorry, you cannot add that class", 
-									"Add Class Error", JOptionPane.PLAIN_MESSAGE , image);
-						}
-					
+			if (input !=null) {
+				boolean success = false;
+				try {
+					success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+				} catch (NumberFormatException | IOException e1) {
+					success=false;
+					try {
+						success = currStudent.addCourse(chosenCourse,Integer.parseInt(input));
+					} catch (NumberFormatException e11) {
+						// TODO Auto-generated catch block
+						e11.printStackTrace();
+					} catch (IOException e11) {
+						// TODO Auto-generated catch block
+						e11.printStackTrace();
 					}
-		}
+					if(success){
+						ImageIcon image = new ImageIcon(getClass().getResource("zoidberg.jpg"));
+						JOptionPane.showMessageDialog(null, 
+								"You have successfully added your class!", 
+								"Add Class Confimation", JOptionPane.PLAIN_MESSAGE , image);
 
+					}
+					else{
+						ImageIcon image = new ImageIcon(getClass().getResource("127.gif"));
+						JOptionPane.showMessageDialog(null, 
+								"I'm sorry, you cannot add that class", 
+								"Add Class Error", JOptionPane.PLAIN_MESSAGE , image);
+					}
+
+				}
+			}
+
+		}
 	}
 	class DescriptionListener implements ActionListener{
 		private Course course;
-		
+
 		public DescriptionListener(Course course){
 			this.course=course;
 		}
-		
+
 		public void actionPerformed(ActionEvent e){
 			JOptionPane.showMessageDialog(null, "<html><body><p style='width: 200px;'>"+String.format("%s: %s", course.getCourseNum(),course.getCourseDescription())+"</body></html>");
 		}
-		
-	}
+
 	}
 }
+
 

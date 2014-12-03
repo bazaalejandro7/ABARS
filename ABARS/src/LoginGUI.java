@@ -1,5 +1,7 @@
 
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -11,8 +13,12 @@ import javax.swing.JOptionPane;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+
+import jxl.read.biff.File;
 
 @SuppressWarnings("serial")
 public class LoginGUI extends JFrame{
@@ -32,6 +38,7 @@ public class LoginGUI extends JFrame{
 	 */
 	/**Main Constructor: Creates and displays the Frame of the login
 	 * 
+	 * Edited Dec 2 by Courtney Fennell: added image to login screen
 	 */
 	public LoginGUI(Starter start){
 		this.start=start;
@@ -48,7 +55,10 @@ public class LoginGUI extends JFrame{
 
 		button.addActionListener(new LoginButtonListener());
 		passField.addActionListener(new LoginButtonListener());
-
+		
+		JLabel image = new JLabel(new ImageIcon("erau.jpg"));
+		
+		panel.add(image);
 		panel.add(new JLabel("Enter Username"));
 		panel.add(userField);
 		panel.add(new JLabel("Password"));
@@ -93,11 +103,13 @@ public class LoginGUI extends JFrame{
 					thisLogin.dispose();
 				}
 				else{
-					JOptionPane.showMessageDialog(null, "Incorrect Username/Password");
+					ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.jpg"));
+					JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login attempt", DISPOSE_ON_CLOSE, image);
 				}
 			}
 			catch(IndexOutOfBoundsException exp){
-				JOptionPane.showMessageDialog(null, "Incorrect Username/Password");
+				ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.jpg"));
+				JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login attempt", DISPOSE_ON_CLOSE, image);
 			}
 
 

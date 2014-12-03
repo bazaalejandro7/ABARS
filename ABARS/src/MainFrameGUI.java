@@ -1,13 +1,16 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -21,7 +24,7 @@ import javax.swing.WindowConstants;
  * @created October 29, 2014
  */
 @SuppressWarnings("serial")
-public class MainFrameGUI extends JFrame {
+public class MainFrameGUI{
 
 	Student currStudent;
 	DegreeAuditGUI daGUI;
@@ -57,6 +60,12 @@ public class MainFrameGUI extends JFrame {
 		spGUI = new StudentProfileGUI(currStudent,this);
 
 		//set up menu panel
+		
+		//add menu panel image
+		JLabel image = new JLabel(new ImageIcon("erau.jpg"));
+		menu.add(image);
+		
+		
 		menu.setLayout(new BoxLayout( menu, BoxLayout.Y_AXIS ));
 		menu.add(Box.createVerticalStrut(150));
 		JButton degreeAuditButton = new JButton("View Degree Audit");
@@ -167,6 +176,7 @@ public class MainFrameGUI extends JFrame {
 
 		//sets the location, close operation and set the size
 		frame.setLocation(220,75); 
+		frame.setBackground(Color.gray);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setSize(900, 700);
 
@@ -184,7 +194,6 @@ public class MainFrameGUI extends JFrame {
 			e.printStackTrace();
 		}
 		frame.dispose();
-		this.dispose();
 	}
 	/**
 	 * 
