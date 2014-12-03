@@ -74,7 +74,7 @@ public class LoginGUI extends JFrame{
 		superPanel.add(button,BorderLayout.SOUTH);
 
 		this.add(superPanel);
-		this.setSize(200,180);
+		this.setSize(200,340);
 		this.setTitle("Student Login");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

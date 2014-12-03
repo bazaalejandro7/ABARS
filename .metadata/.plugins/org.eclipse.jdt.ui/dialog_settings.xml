@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="javadoc">
-		<item value="private" key="access"/>
+		<item value="public" key="access"/>
 		<item value="false" key="noindex"/>
 		<item value="/Users/Rasgriz3/Documents/ABARS/ABARS/javadoc.xml" key="antpath"/>
 		<item value="false" key="nodeprecatedlist"/>
@@ -17,12 +17,12 @@
 		<item value="true" key="splitindex"/>
 		<item value="true" key="fromStandard"/>
 		<item value="false" key="notree"/>
-		<item value="/Users/Rasgriz3/Desktop/Implementation 2" key="destdir"/>
+		<item value="/Users/courtneyfennell/ABARS/Javadocs" key="destdir"/>
 		<item value="false" key="openinbrowser"/>
 		<section name="projects">
 			<section name="ABARS">
 				<item value="/Users/Rasgriz3/Documents/ABARS/ABARS/javadoc.xml" key="antpath"/>
-				<item value="/Users/Rasgriz3/Desktop/Implementation 2" key="destdir"/>
+				<item value="/Users/courtneyfennell/ABARS/Javadocs" key="destdir"/>
 				<item value="" key="href"/>
 			</section>
 		</section>
@@ -38,10 +38,10 @@
 	</section>
 	<section name="JavadocWizardDialog">
 		<item value="600" key="DIALOG_WIDTH"/>
-		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
+		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
 		<item value="534" key="DIALOG_HEIGHT"/>
-		<item value="658" key="DIALOG_X_ORIGIN"/>
-		<item value="170" key="DIALOG_Y_ORIGIN"/>
+		<item value="292" key="DIALOG_X_ORIGIN"/>
+		<item value="121" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="BuildPathsPropertyPage">
 		<item value="3" key="pageIndex"/>
