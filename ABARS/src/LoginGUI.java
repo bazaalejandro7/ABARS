@@ -46,7 +46,11 @@ public class LoginGUI extends JFrame{
 		JPanel superPanel=new JPanel();
 		
 		superPanel.setLayout(new BorderLayout());
+<<<<<<< HEAD
 		panel.setLayout(new BoxLayout( panel, BoxLayout.Y_AXIS));
+=======
+		panel.setLayout(new GridLayout(5,1));
+>>>>>>> be254b7fc35a3241c8c8d7ebab086eb8867c1577
 		
 		userField=new JTextField();
 		passField=new JPasswordField();
