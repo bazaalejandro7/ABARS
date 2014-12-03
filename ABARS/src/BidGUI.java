@@ -30,12 +30,22 @@ public class BidGUI extends JPanel {
 	 * @param student
 	 * @throws BiffException
 	 * @throws IOException
+	 * 
+	 * Edited: Matthew Alpert
+	 * Changes: fixed issue with creation of the arrayList
 	 */
 	public BidGUI(Student student) throws IOException{
 		//this is where a student can drop a class
+		bidCourses = null;
 		innerPanel = new JPanel();
 		currStudent = student;
-		bidCourses = currStudent.getBidCourses();
+		
+		try{
+			bidCourses = currStudent.getBidCourses();
+		}catch(Exception e){
+			System.out.println("Error");
+		}
+		
 
 		//add layout manager
 		this.setLayout(new BoxLayout( this, BoxLayout.Y_AXIS));
