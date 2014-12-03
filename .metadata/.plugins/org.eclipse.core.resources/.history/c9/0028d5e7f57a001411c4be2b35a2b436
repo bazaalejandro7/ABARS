@@ -23,7 +23,7 @@ import javax.swing.WindowConstants;
  * @author courtneyfennell
  * @created October 29, 2014
  */
-
+@SuppressWarnings("serial")
 public class MainFrameGUI{
 
 	Student currStudent;

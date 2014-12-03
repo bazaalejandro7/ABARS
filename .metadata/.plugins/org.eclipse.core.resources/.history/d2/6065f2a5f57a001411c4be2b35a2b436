@@ -12,11 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import jxl.read.biff.File;
 
 @SuppressWarnings("serial")
 public class LoginGUI extends JFrame{
@@ -36,7 +39,7 @@ public class LoginGUI extends JFrame{
 	 */
 	/**Main Constructor: Creates and displays the Frame of the login
 	 * 
-	 * Edited Dec 2 by Courtney Fennell: added image to login screen and changed layout manager
+	 * Edited Dec 2 by Courtney Fennell: added image to login screen
 	 */
 	public LoginGUI(Starter start){
 		this.start=start;
@@ -73,7 +76,7 @@ public class LoginGUI extends JFrame{
 		superPanel.add(button,BorderLayout.SOUTH);
 		
 		this.add(superPanel);
-		this.setSize(200,340);
+		this.setSize(200,300);
 		this.setTitle("Student Login");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,13 +110,13 @@ public class LoginGUI extends JFrame{
 					thisLogin.dispose();
 				}
 				else{
-					ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.gif"));
-					JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login Attempt", DISPOSE_ON_CLOSE, image);
+					ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.jpg"));
+					JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login attempt", DISPOSE_ON_CLOSE, image);
 				}
 			}
 			catch(IndexOutOfBoundsException exp){
-				ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.gif"));
-				JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login Attempt", DISPOSE_ON_CLOSE, image);
+				ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.jpg"));
+				JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login attempt", DISPOSE_ON_CLOSE, image);
 			}
 
 

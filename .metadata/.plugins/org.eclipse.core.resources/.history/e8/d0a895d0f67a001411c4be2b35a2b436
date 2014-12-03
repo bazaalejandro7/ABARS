@@ -107,13 +107,13 @@ public class LoginGUI extends JFrame{
 					thisLogin.dispose();
 				}
 				else{
-					ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.gif"));
-					JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login Attempt", DISPOSE_ON_CLOSE, image);
+					ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.jpg"));
+					JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login attempt", DISPOSE_ON_CLOSE, image);
 				}
 			}
 			catch(IndexOutOfBoundsException exp){
-				ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.gif"));
-				JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login Attempt", DISPOSE_ON_CLOSE, image);
+				ImageIcon image = new ImageIcon(getClass().getResource("youshallnotpass.jpg"));
+				JOptionPane.showMessageDialog(null, "Incorrect Username/Password", "Invalid Login attempt", DISPOSE_ON_CLOSE, image);
 			}
 
 
