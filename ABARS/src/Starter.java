@@ -10,11 +10,9 @@ import java.io.IOException;
 public class Starter {
 	
 	public static void main(String[] args) throws IOException {
-		//if(currStudent.isInstanceof(Student))
-			//new MainFrameGUI(currStudent);
-		//else
-			//new AdminGUI();
-			
+		Starter start=new Starter();
+		start.createLogin();
+		
 	}
 	public Starter(){
 		
